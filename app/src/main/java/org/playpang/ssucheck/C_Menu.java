@@ -22,7 +22,7 @@ public class C_Menu extends AppCompatActivity {
 
         //타이틀 바 내용
         ActionBar bar = getSupportActionBar();
-        bar.setTitle("숭실대학교 안면인식 출결 시스템");
+        bar.setTitle("숭실대학교 안면인식 출결 시스템~");
 
         //현재 듣고 있는 과목 버튼 누르면
         TextView tv1 = findViewById(R.id.c_menu_currentsubject);
