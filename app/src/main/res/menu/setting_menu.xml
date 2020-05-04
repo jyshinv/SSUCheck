@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/ic_dehaze_black_24dp"
+        app:showAsAction="withText"
+        />
+
+
+
+    <item android:id="@+id/currentsubject"
+        android:title="현재 수강중인 과목"
+        app:showAsAction="withText"
+        />
+
+
+    <item android:id="@+id/realtimecheck"
+        android:title="내 출결 현황"
+        app:showAsAction="withText"
+        />
+
+
+    <item android:id="@+id/timetable"
+        android:title="시간표 조회"
+        app:showAsAction="withText"
+        />
+
+
+    <item android:id="@+id/setting"
+        android:title="설정"
+        app:showAsAction="withText"
+        />
+
+    <item android:id="@+id/logout"
+        android:title="로그아웃"
+        app:showAsAction="withText"
+        />
+
+</menu>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.playpang.ssucheck">
+
+    <!--permission-->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".CD_TimeTableWebView"></activity>
+        <activity android:name=".CD_TimeTable" />
+        <activity android:name=".CC_MyCheck" />
+        <activity android:name=".CB_RealTimeCheck" />
+        <activity android:name=".CA_CurrentSubject" />
+        <activity android:name=".C_Menu" />
+        <activity android:name=".B_Login" />
+        <activity android:name=".A_Intro">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity" />
+    </application>
+
+</manifest>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorWhite"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".C_Menu">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:background="@color/colorMenuintro">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="30dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:textColor="@color/colorWhite"
+                android:text="홍길동 20151111" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp"
+                android:text="IT학부" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorWhite"
+                android:textSize="10sp"
+                android:text="글로벌 미디어 학부" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:background="@color/colorMenu">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="30dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/c_menu_currentsubject"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorMenu"
+                    android:gravity="left|center"
+                    android:textColor="@drawable/change_text_color_blue"
+                    android:textSize="25dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="현재 수강중인 과목"/>
+
+
+            </LinearLayout>
+
+
+
+
+            <TextView
+                android:id="@+id/c_menu_realtimecheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorMenu"
+                android:gravity="left|center"
+                android:textColor="@drawable/change_text_color_blue"
+                android:textSize="25dp"
+                android:layout_marginBottom="20dp"
+                android:text="실시간 출결 현황"/>
+
+
+
+            <TextView
+                android:id="@+id/c_menu_mycheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorMenu"
+                android:gravity="left|center"
+                android:textColor="@drawable/change_text_color_blue"
+                android:textSize="25dp"
+                android:layout_marginBottom="20dp"
+                android:text="내 출결 현황"/>
+
+            <TextView
+                android:id="@+id/c_menu_timetable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorMenu"
+                android:gravity="left|center"
+                android:textColor="@drawable/change_text_color_blue"
+                android:textSize="25dp"
+                android:text="시간표 조회"/>
+
+
+        </LinearLayout>
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
