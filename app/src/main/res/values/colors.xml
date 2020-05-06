@@ -9,5 +9,10 @@
     <color name="colorBlack">#111111</color>
     <color name="colorMenu">#263445</color>
     <color name="colorMenuintro">#3B4857</color>
+    <color name="colorFirst">#007FB3</color>
+    <color name="colorSecond">#00517D</color>
+    <color name="colorThird">#0A274F</color>
+    <color name="colorFourth">#002966</color>
+    <color name="colorBasic">#C0CCDA</color>
 
 </resources>

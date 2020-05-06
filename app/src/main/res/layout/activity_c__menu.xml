@@ -8,120 +8,219 @@
     android:orientation="vertical"
     tools:context=".C_Menu">
 
-    <LinearLayout
+
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:background="@color/colorMenuintro">
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="30dp"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:background="@color/colorBasic"
+            android:visibility="visible">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/c_menu_home_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="Home"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorWhite" />
+
+
+            <ImageView
+                android:id="@+id/c_menu_threedot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_threedot_24dp"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="120dp">
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/student1"/>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="20dp"
+               android:layout_gravity="center"
+               android:orientation="vertical">
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textSize="40dp"
+                   android:textColor="@color/colorBlack"
+                   android:text="김지원 20152020"/>
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textSize="30dp"
+                   android:textColor="@color/colorBlack"
+                   android:text="IT대학"/>
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textSize="20dp"
+                   android:textColor="@color/colorBlack"
+                   android:text="글로벌미디어학부"/>
+
+
+           </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+    <!--버튼 들어가는 레이아웃 1행-->
+    <LinearLayout
+        android:layout_marginTop="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+       <LinearLayout
+           android:layout_width="0dp"
+           android:layout_height="300dp"
+           android:background="@color/colorFirst"
+           android:orientation="vertical"
+           android:layout_weight="1">
+
+           <ImageView
+               android:layout_width="150dp"
+               android:layout_height="150dp"
+               android:layout_marginTop="50dp"
+               android:layout_gravity="center"
+               android:src="@drawable/first"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:textSize="25sp"
-                android:textColor="@color/colorWhite"
-                android:text="홍길동 20151111" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorWhite"
-                android:textSize="20sp"
-                android:text="IT학부" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorWhite"
-                android:textSize="10sp"
-                android:text="글로벌 미디어 학부" />
+                android:text="실시간 강의 출결"
+                android:textColor="@color/colorWhite"/>
 
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:background="@color/colorMenu">
+       </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="30dp"
-            android:orientation="vertical">
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:background="@color/colorSecond"
+            android:orientation="vertical"
+            android:layout_weight="1">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/c_menu_currentsubject"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorMenu"
-                    android:gravity="left|center"
-                    android:textColor="@drawable/change_text_color_blue"
-                    android:textSize="25dp"
-                    android:layout_marginBottom="20dp"
-                    android:text="현재 수강중인 과목"/>
-
-
-            </LinearLayout>
-
-
-
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="50dp"
+                android:layout_gravity="center"
+                android:src="@drawable/second"/>
 
             <TextView
-                android:id="@+id/c_menu_realtimecheck"
+                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/colorMenu"
-                android:gravity="left|center"
-                android:textColor="@drawable/change_text_color_blue"
-                android:textSize="25dp"
-                android:layout_marginBottom="20dp"
-                android:text="실시간 출결 현황"/>
+                android:layout_gravity="center"
+                android:textSize="25sp"
+                android:text="내 출결 현황"
+                android:textColor="@color/colorWhite"/>
+
+        </LinearLayout>
 
 
+    </LinearLayout>
+
+    <!--버튼 들어가는 레이아웃 2행-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:background="@color/colorThird"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="50dp"
+                android:layout_gravity="center"
+                android:src="@drawable/thrid"/>
 
             <TextView
-                android:id="@+id/c_menu_mycheck"
+                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/colorMenu"
-                android:gravity="left|center"
-                android:textColor="@drawable/change_text_color_blue"
-                android:textSize="25dp"
-                android:layout_marginBottom="20dp"
-                android:text="내 출결 현황"/>
+                android:layout_gravity="center"
+                android:textSize="25sp"
+                android:text="시간표 조회"
+                android:textColor="@color/colorWhite"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:background="@color/colorFourth"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="50dp"
+                android:layout_gravity="center"
+                android:src="@drawable/fourth"/>
 
             <TextView
-                android:id="@+id/c_menu_timetable"
+                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/colorMenu"
-                android:gravity="left|center"
-                android:textColor="@drawable/change_text_color_blue"
-                android:textSize="25dp"
-                android:text="시간표 조회"/>
-
+                android:layout_gravity="center"
+                android:textSize="25sp"
+                android:text="출결 변경 신청"
+                android:textColor="@color/colorWhite"/>
 
         </LinearLayout>
 
 
 
 
-
-
     </LinearLayout>
+
+
+
+
 
 
 
