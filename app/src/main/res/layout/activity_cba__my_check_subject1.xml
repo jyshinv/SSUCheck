@@ -70,17 +70,22 @@
         </LinearLayout>
 
 
-        <LinearLayout
+        <ScrollView
             android:background="@color/colorBasic"
             android:layout_marginTop="350dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="900dp">
 
 
 
-        </LinearLayout>
+
+
+
+
+        </ScrollView>
 
 
     </FrameLayout>

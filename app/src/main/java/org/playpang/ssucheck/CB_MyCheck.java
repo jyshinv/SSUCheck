@@ -1,12 +1,11 @@
 package org.playpang.ssucheck;
 
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import org.playpang.ssucheck.adapter.CA_RealTimeCheckAdapter;
 import org.playpang.ssucheck.adapter.CB_RealTimeCheckAdapter;
 
 public class CB_MyCheck extends AppCompatActivity {

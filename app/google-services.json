@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "861427507792",
+    "firebase_url": "https://playpang-33ade.firebaseio.com",
+    "project_id": "playpang-33ade",
+    "storage_bucket": "playpang-33ade.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861427507792:android:124fdd926f8342d472a755",
+        "android_client_info": {
+          "package_name": "org.playpang.ssucheck"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "861427507792-iocqoh2tdua9crahl5phgudbsmrutpr4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQ2syFOPdXjrP9LO1HlCUJqlsp38UQ7-o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "861427507792-iocqoh2tdua9crahl5phgudbsmrutpr4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

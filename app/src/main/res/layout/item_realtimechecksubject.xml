@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/realtimechecksubject_ll"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/realtimechecksubject_tv0"
+            android:layout_width="0dp"
+            android:layout_marginLeft="30dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="25sp"
+            android:textColor="@color/colorBlack"
+            android:text="학생이름"/>
+
+        <TextView
+            android:id="@+id/realtimechecksubject_tv1"
+            android:layout_width="0dp"
+            android:layout_marginLeft="30dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="25sp"
+            android:textColor="@color/colorBlack"
+            android:text="데이터베이스"/>
+
+        <TextView
+            android:id="@+id/realtimechecksubject_tv2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="50dp"
+            android:textColor="@color/colorBlack"
+            android:textSize="25sp"
+            android:text="2020-03-16"/>
+
+        <TextView
+            android:id="@+id/realtimechecksubject_tv3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="25sp"
+            android:textColor="@color/colorGreen"
+            android:text="출결"/>
+
+    </LinearLayout>
+
+</LinearLayout>

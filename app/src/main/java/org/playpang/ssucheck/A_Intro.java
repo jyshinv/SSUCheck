@@ -1,13 +1,10 @@
 package org.playpang.ssucheck;
 
-import android.Manifest;
 import android.content.Intent;
 import android.os.Handler;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-
-import java.util.List;
 
 public class A_Intro extends AppCompatActivity {
 
