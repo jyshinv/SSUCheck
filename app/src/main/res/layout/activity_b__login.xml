@@ -12,8 +12,8 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginTop="30dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="150dp"
         android:src="@drawable/ssulogo"
         />
 
@@ -27,12 +27,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="100dp"
         android:orientation="vertical">
 
 
 
        <EditText
+           android:id="@+id/b_login_id_et"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:backgroundTint="@color/colorGray"
@@ -42,25 +43,50 @@
            />
 
         <EditText
+            android:id="@+id/b_login_pw_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorGray"
             android:layout_marginTop="30dp"
-            android:inputType="textPassword"
             android:hint="Password"
             android:maxLines="1"
             android:textColorHint="@color/colorGray"
             />
 
-        <!--<Switch-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:backgroundTint="@color/colorGray"/>-->
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Switch
+                android:id="@+id/b_login_auto_switch"
+                android:checked="false"
+                android:track="@drawable/switch_track_selector"
+                android:thumb="@drawable/switch_thumb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="자동 로그인"/>
+
+        </LinearLayout>
+
+
 
         <Button
             android:id="@+id/B_Login_loginbtn"
+            android:background="@color/colorDarkGray"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
             android:text="LOG IN"
             android:layout_gravity="center"/>
 

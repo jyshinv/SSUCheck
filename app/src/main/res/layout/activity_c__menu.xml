@@ -40,7 +40,7 @@
                 android:textColor="@color/colorWhite" />
 
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/c_menu_threedot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -106,9 +106,10 @@
         android:orientation="horizontal">
 
        <LinearLayout
+           android:id="@+id/c_menu_first_ll"
            android:layout_width="0dp"
            android:layout_height="300dp"
-           android:background="@color/colorFirst"
+           android:background="@drawable/ripple_effect_first"
            android:orientation="vertical"
            android:layout_weight="1">
 
@@ -131,9 +132,10 @@
        </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/c_menu_second_ll"
             android:layout_width="0dp"
             android:layout_height="300dp"
-            android:background="@color/colorSecond"
+            android:background="@drawable/ripple_effect_second"
             android:orientation="vertical"
             android:layout_weight="1">
 
@@ -165,9 +167,10 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/c_menu_third_ll"
             android:layout_width="0dp"
             android:layout_height="300dp"
-            android:background="@color/colorThird"
+            android:background="@drawable/ripple_effect_third"
             android:orientation="vertical"
             android:layout_weight="1">
             <ImageView
@@ -189,9 +192,10 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/c_menu_fourth_ll"
             android:layout_width="0dp"
             android:layout_height="300dp"
-            android:background="@color/colorFourth"
+            android:background="@drawable/ripple_effect_fourth"
             android:orientation="vertical"
             android:layout_weight="1">
 

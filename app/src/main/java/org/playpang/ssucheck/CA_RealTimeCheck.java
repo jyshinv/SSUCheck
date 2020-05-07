@@ -4,14 +4,14 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class CA_CurrentSubject extends AppCompatActivity {
+public class CA_RealTimeCheck extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ca__current_subject);
+        setContentView(R.layout.activity_ca__real_time_check);
 
         ActionBar bar = getSupportActionBar();
-        bar.setTitle("현재 수강중인 과목 검색!!!");
+        bar.setTitle("실시간 강의 출결");
     }
 }

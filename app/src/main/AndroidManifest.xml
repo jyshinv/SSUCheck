@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.playpang.ssucheck">
-
-    <!--permission-->
+    <!-- permission -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -12,11 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CD_TimeTableWebView"></activity>
-        <activity android:name=".CD_TimeTable" />
-        <activity android:name=".CC_MyCheck" />
-        <activity android:name=".CB_RealTimeCheck" />
-        <activity android:name=".CA_CurrentSubject" />
+        <activity android:name=".CD_ChangeCheck"></activity>
+        <activity android:name=".CC_TimeTable" />
+        <activity android:name=".CB_MyCheck" />
+        <activity android:name=".CA_RealTimeCheck" />
         <activity android:name=".C_Menu" />
         <activity android:name=".B_Login" />
         <activity android:name=".A_Intro">

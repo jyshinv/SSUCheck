@@ -14,5 +14,6 @@
     <color name="colorThird">#0A274F</color>
     <color name="colorFourth">#002966</color>
     <color name="colorBasic">#C0CCDA</color>
+    <color name="colorDarkGray">#47525E</color>
 
 </resources>

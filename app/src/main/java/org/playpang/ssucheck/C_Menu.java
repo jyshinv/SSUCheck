@@ -2,6 +2,7 @@ package org.playpang.ssucheck;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
@@ -13,6 +14,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,14 +25,102 @@ import org.w3c.dom.Text;
 
 public class C_Menu extends AppCompatActivity {
 
+    //사용할 변수
+    LinearLayout ll;
+    Intent intent;
+    ImageButton btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_c__menu);
 
+
         //타이틀바 색상 변경
         ActionBar bar = getSupportActionBar();
         bar.hide();
+
+        btn = findViewById(R.id.c_menu_threedot);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopupMenu popup= new PopupMenu(getApplicationContext(), v);//v는 클릭된 뷰를 의미
+
+                getMenuInflater().inflate(R.menu.three_dot_menu, popup.getMenu());
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()){
+                            case R.id.m1:
+                                Toast.makeText(getApplication(),"로그아웃",Toast.LENGTH_SHORT).show();
+                                //SharedPreferences에 저장된 값들을 로그아웃 버튼을 누르면 삭제하기 위해
+                                //SharedPreferences를 불러옵니다. 로그인 화면에서 만든 이름으로
+                                Intent intent = new Intent(C_Menu.this, B_Login.class);
+                                startActivity(intent);
+                                SharedPreferences auto = getSharedPreferences("auto", Activity.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = auto.edit();
+                                //editor.clear()는 auto에 들어있는 모든 정보를 기기에서 지웁니다.
+                                editor.clear();
+                                editor.commit();
+                                finish();
+                                break;
+                            case R.id.m2:
+                                Toast.makeText(getApplication(),"세팅",Toast.LENGTH_SHORT).show();
+                                break;
+                            default:
+                                break;
+                        }
+                        return false;
+                    }
+                });
+
+                popup.show();//Popup Menu 보이기
+
+
+            }
+        });
+
+        //main화면 4개의 버튼 누를 시 각 창으로 이동
+        //첫번째 버튼
+        ll = findViewById(R.id.c_menu_first_ll);
+        ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(getApplicationContext(),CA_RealTimeCheck.class);
+                startActivity(intent);
+            }
+        });
+
+        //두번째 버튼
+        ll = findViewById(R.id.c_menu_second_ll);
+        ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(getApplicationContext(),CB_MyCheck.class);
+                startActivity(intent);
+            }
+        });
+
+        //세번째 버튼
+        ll = findViewById(R.id.c_menu_third_ll);
+        ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(getApplicationContext(),CC_TimeTable.class);
+                startActivity(intent);
+            }
+        });
+
+        //네번째 버튼
+        ll = findViewById(R.id.c_menu_fourth_ll);
+        ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(getApplicationContext(),CD_ChangeCheck.class);
+                startActivity(intent);
+            }
+        });
+
 
 
 
