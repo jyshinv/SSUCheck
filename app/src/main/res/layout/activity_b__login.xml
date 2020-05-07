@@ -49,7 +49,7 @@
             android:backgroundTint="@color/colorGray"
             android:layout_marginTop="30dp"
             android:hint="Password"
-            android:inputType="numberPassword"
+            android:inputType="textPassword"
             android:maxLines="1"
             android:textColorHint="@color/colorGray"
             />

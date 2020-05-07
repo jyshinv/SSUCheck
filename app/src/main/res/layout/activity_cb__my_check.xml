@@ -6,4 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".CB_MyCheck">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ssulogo2"
+            android:layout_gravity="center"
+            android:visibility="visible"/>
+
+        <ListView
+            android:id="@+id/cb_my_check_lv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ListView>
+    </FrameLayout>
+
+
 </LinearLayout>

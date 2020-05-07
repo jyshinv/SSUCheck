@@ -15,19 +15,24 @@ import android.widget.Toast;
 
 import org.playpang.ssucheck.CAA_RealTimeCheck2;
 import org.playpang.ssucheck.CA_RealTimeCheck;
+import org.playpang.ssucheck.CBA_MyCheckSubject1;
+import org.playpang.ssucheck.CBA_MyCheckSubject2;
+import org.playpang.ssucheck.CBA_MyCheckSubject3;
+import org.playpang.ssucheck.CBA_MyCheckSubject4;
+import org.playpang.ssucheck.CBA_MyCheckSubject5;
 import org.playpang.ssucheck.R;
 import org.playpang.ssucheck.data.SubjectNameItem;
 
 import java.util.ArrayList;
 
-public class CA_RealTimeCheckAdapter extends BaseAdapter {//BaseAdapter상속 후 alt+enter후 implement method 누르면 자동 생성됨
+public class CB_RealTimeCheckAdapter extends BaseAdapter {//BaseAdapter상속 후 alt+enter후 implement method 누르면 자동 생성됨
 
     // Adapter에 추가된 데이터를 저장하기 위한 ArrayList
     //여기서 <>안에는 data패키지 안 get,set 하는 클래스
     ArrayList<SubjectNameItem> listViewItemList = new ArrayList<SubjectNameItem>();
 
     //생성자
-    public CA_RealTimeCheckAdapter(){ }
+    public CB_RealTimeCheckAdapter(){ }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -58,12 +63,34 @@ public class CA_RealTimeCheckAdapter extends BaseAdapter {//BaseAdapter상속 �
                 String kor = listViewItemList.get(pos).getKorSubject();
                 String eng = listViewItemList.get(pos).getEngSubject();
                 if(eng.equals("Database")){
-                    Intent intent = new Intent(v.getContext(), CAA_RealTimeCheck2.class);
+                    Intent intent = new Intent(v.getContext(), CBA_MyCheckSubject1.class);
                     intent.putExtra("kor",kor);
                     intent.putExtra("eng",eng);
                     context.startActivity(intent);
-                }else{
-                    NotTime(v);
+                }else if(eng.equals("Computer Architecture")){
+                    Intent intent = new Intent(v.getContext(), CBA_MyCheckSubject2.class);
+                    intent.putExtra("kor",kor);
+                    intent.putExtra("eng",eng);
+                    context.startActivity(intent);
+
+                }else if(eng.equals("Digital Media Principles and practice")){
+                    Intent intent = new Intent(v.getContext(), CBA_MyCheckSubject3.class);
+                    intent.putExtra("kor",kor);
+                    intent.putExtra("eng",eng);
+                    context.startActivity(intent);
+
+                }else if(eng.equals("Computer Programming")){
+                    Intent intent = new Intent(v.getContext(), CBA_MyCheckSubject4.class);
+                    intent.putExtra("kor",kor);
+                    intent.putExtra("eng",eng);
+                    context.startActivity(intent);
+
+                }else if(eng.equals("Thesis Seminar")){
+                    Intent intent = new Intent(v.getContext(), CBA_MyCheckSubject5.class);
+                    intent.putExtra("kor",kor);
+                    intent.putExtra("eng",eng);
+                    context.startActivity(intent);
+
                 }
 
             }
@@ -92,23 +119,14 @@ public class CA_RealTimeCheckAdapter extends BaseAdapter {//BaseAdapter상속 �
 
     // 아이템 데이터 추가를 위한 함수. 개발자가 만드는 함수임!
     public void addItem(String kor, String eng) {
-       SubjectNameItem item = new SubjectNameItem();
+        SubjectNameItem item = new SubjectNameItem();
 
-       item.setKorSubject(kor);
-       item.setEngSubject(eng);
-       listViewItemList.add(item);
+        item.setKorSubject(kor);
+        item.setEngSubject(eng);
+        listViewItemList.add(item);
     }
 
-    //현재 진행중인 강의가 아니면 알림창 뜨는 함수
-    public void NotTime(View v){
-        new AlertDialog.Builder(v.getContext())
-                .setTitle("강의").setMessage("현재 진행중인 강의가 아닙니다.")
-                .setNegativeButton("확인", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-            }
-        }).show();
-    }
+
 
 
 
