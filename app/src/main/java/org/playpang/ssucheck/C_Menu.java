@@ -36,7 +36,7 @@ public class C_Menu extends AppCompatActivity {
         setContentView(R.layout.activity_c__menu);
 
 
-        //타이틀바 색상 변경
+        //타이틀바 숨기기
         ActionBar bar = getSupportActionBar();
         bar.hide();
 
@@ -63,6 +63,7 @@ public class C_Menu extends AppCompatActivity {
                                 editor.clear();
                                 editor.commit();
                                 finish();
+
                                 break;
                             case R.id.m2:
                                 Toast.makeText(getApplication(),"세팅",Toast.LENGTH_SHORT).show();

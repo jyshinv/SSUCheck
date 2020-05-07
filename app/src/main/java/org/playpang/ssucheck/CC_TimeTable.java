@@ -13,5 +13,8 @@ public class CC_TimeTable extends AppCompatActivity {
 
         ActionBar bar = getSupportActionBar();
         bar.setTitle("시간표 조회");
+        bar.setSubtitle("2020-1학기");
+
+
     }
 }

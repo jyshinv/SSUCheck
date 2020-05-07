@@ -81,9 +81,9 @@ public class B_Login extends AppCompatActivity {
                     pw = pw_et.getText().toString();
 
 
-                    if (id.equals("20152020") && pw.equals("0000")) {
+                    if (id.equals("20152020") && pw.equals("0000")) {//로그인 정보 맞을 시
 
-                        if(doautologin){ //스위치 버튼이 on일 경우에만 id와 pw정보를 저장한다.
+                        if(doautologin){ //스위치 버튼이 on일 경우에만 id와 pw정보를 저장하고 로그인 완료하기
                             SharedPreferences auto = getSharedPreferences("auto", Activity.MODE_PRIVATE);
                             //아이디가 '20152020'이고 비밀번호가 '0000'일 경우 SharedPreferences.Editor를 통해
                             //auto의 id와 pw에 값을 저장해 줍니다.
@@ -94,6 +94,7 @@ public class B_Login extends AppCompatActivity {
                             autoLogin.commit();
                         }
 
+                        //스위치 버튼이 off일 경우에는 id와 pw정보 저장하지 않고 로그인 완료하기
                         //로그인 완료
                         //로그인 성공 메세지
                         LoginSuccessMessage();

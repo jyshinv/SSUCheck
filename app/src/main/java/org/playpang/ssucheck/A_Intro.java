@@ -26,7 +26,7 @@ public class A_Intro extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        },2000); //2초 후 로그인 화면으로 넘어간다.
+        },1000); //1초 후 로그인 화면으로 넘어간다.
 
        //인트로의 액션바는 가린다.
         ActionBar bar = getSupportActionBar();
