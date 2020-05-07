@@ -20,7 +20,7 @@ public class CBA_MyCheckSubject1 extends AppCompatActivity {
 
         //액션바에 제목 달기
         ActionBar bar = getSupportActionBar();
-        bar.setTitle(kor);
+        bar.setTitle(kor + " 출결현황");
         bar.setSubtitle(eng);
     }
 }

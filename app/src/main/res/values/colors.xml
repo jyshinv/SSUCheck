@@ -15,5 +15,9 @@
     <color name="colorFourth">#002966</color>
     <color name="colorBasic">#C0CCDA</color>
     <color name="colorDarkGray">#47525E</color>
+    <color name="colorGreen">#FF2EFF36</color>
+    <color name="colorOrange">#FF9800</color>
+    <color name="colorRed">#F13C00</color>
+
 
 </resources>
