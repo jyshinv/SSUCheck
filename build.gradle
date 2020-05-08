@@ -9,7 +9,7 @@ buildscript {
     dependencies {
         //classpath 'com.android.tools.build:gradle:3.4.1'
         //파이어베이스 연동을 위해 추가한 코드
-        classpath 'com.android.tools.build:gradle:3.4.1'
+        classpath 'com.android.tools.build:gradle:3.3.2'
         classpath 'com.google.gms:google-services:4.2.0'
 
         

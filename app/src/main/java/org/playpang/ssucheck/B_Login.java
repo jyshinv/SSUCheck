@@ -47,7 +47,7 @@ public class B_Login extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){ //기본 값은 false임, true로 바뀐다면 Boolean값 true저장
                     doautologin = true;
-                }else{
+                }else{ //isChecked가 true가 아니라면 doautologin에 false값 저장
                     doautologin = false;
                 }
             }

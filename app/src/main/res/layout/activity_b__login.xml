@@ -34,6 +34,7 @@
 
        <EditText
            android:id="@+id/b_login_id_et"
+           android:layout_margin="20dp"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:backgroundTint="@color/colorGray"
@@ -44,10 +45,10 @@
 
         <EditText
             android:id="@+id/b_login_pw_et"
+            android:layout_margin="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorGray"
-            android:layout_marginTop="30dp"
             android:hint="Password"
             android:inputType="textPassword"
             android:maxLines="1"
@@ -55,7 +56,6 @@
             />
 
         <LinearLayout
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
         <Button
             android:id="@+id/B_Login_loginbtn"
             android:background="@color/colorDarkGray"
-            android:layout_marginTop="10dp"
+            android:layout_margin ="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/colorWhite"
