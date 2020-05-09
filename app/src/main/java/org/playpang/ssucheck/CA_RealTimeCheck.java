@@ -2,7 +2,11 @@ package org.playpang.ssucheck;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -20,6 +24,7 @@ public class CA_RealTimeCheck extends AppCompatActivity {
         ActionBar bar = getSupportActionBar();
         bar.setTitle("실시간 강의 출결");
 
+
         //어댑터 생성
         ListAdapter adapter = new CA_RealTimeCheckAdapter();
 
@@ -34,7 +39,26 @@ public class CA_RealTimeCheck extends AppCompatActivity {
         ((CA_RealTimeCheckAdapter) adapter).addItem("졸업프로젝트(가)(온&오프)[21589906]","Thesis Seminar");
 
 
+    }
+
+    //액션바에 버튼 집어넣기
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.back_btn, menu);
+        return true;
+    }
 
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if(id == R.id.back_btn){
+            Intent intent = new Intent(getApplicationContext(), C_Menu.class);
+            startActivity(intent);
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

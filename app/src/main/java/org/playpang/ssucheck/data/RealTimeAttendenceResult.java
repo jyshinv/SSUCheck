@@ -4,29 +4,42 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RealTimeAttendenceResult {
-    //public String AttendenceTime;
-    public String junsu;
-    public String jillkim;
+    //변수
     public String jiwonkim;
+    public String jiilkim;
+    public String jiyoonshin;
+    public String spongebob;
+    public String ddunge;
+    public String new1;
+    public String new2;
+    public String new3;
 
-    
-
-    public RealTimeAttendenceResult(){
+    public RealTimeAttendenceResult(){ //생성자
 
     }
 
-    public RealTimeAttendenceResult(String junsu,String jillkim, String jiwonkim){
-        this.junsu = junsu;
-        this.jillkim = jillkim;
+    public RealTimeAttendenceResult(String jiilkim, String jiwonkim,String jiyoonshin, String spongebob, String ddunge, String new1, String new2, String new3){ //생성자
+        this.jiilkim = jiilkim;
         this.jiwonkim = jiwonkim;
+        this.jiyoonshin = jiyoonshin;
+        this.spongebob = spongebob;
+        this.ddunge = ddunge;
+        this.new1 = new1;
+        this.new2 = new2;
+        this.new3 = new3;
 
     }
 
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
-        result.put("junsu",junsu);
-        result.put("jillkim", jillkim);
+        result.put("jiilkim", jiilkim);
         result.put("jiwonkim", jiwonkim);
+        result.put("jiyoonshin",jiyoonshin);
+        result.put("spongebob",spongebob);
+        result.put("ddunge",ddunge);
+        result.put("new1",new1);
+        result.put("new2",new2);
+        result.put("new3",new3);
 
         return result;
     }

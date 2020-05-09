@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorWhite"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".C_Menu">
-
-
+    android:id="@+id/caa_real_time_check2_ll"
+    tools:context=".CAA_RealTimeCheck2">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -22,6 +21,7 @@
 
         </LinearLayout>
 
+        <!--Today, 실시간 출결 현황, 오늘 날짜와 시간 레이아웃-->
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -47,24 +47,25 @@
                 android:textStyle="bold"
                 android:textColor="@color/colorBlack" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:text="실시간 출결 현황"/>
-
-
-
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="70dp"
             android:layout_marginRight="10dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_gravity="right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:text="실시간 출결 현황"/>
 
 
             <TextView
@@ -74,13 +75,14 @@
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:layout_gravity="right"
-                android:text="오늘 날짜-시간"/>
+                tools:text="오늘 날짜-시간"/>
 
 
 
         </LinearLayout>
 
 
+        <!--학생들 리스트 시작-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -90,253 +92,589 @@
             android:layout_marginRight="20dp"
             android:orientation="vertical">
 
+
+            <!--김지원 레이아웃-->
             <LinearLayout
-                android:orientation="vertical"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="bottom"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:src="@drawable/user_jiwon"/>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="25sp"
+                        android:textColor="@color/colorBlack"
+                        android:text="김지원   20152020"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/caa_real_time_check2_jiwon_attend"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:textSize="25sp"
+                            android:textColor="@color/colorDarkGray"
+                            android:text="출석"/>
+
+                        <TextView
+                            android:id="@+id/caa_real_time_check2_jiwon_late"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:textSize="25sp"
+                            android:textColor="@color/colorDarkGray"
+                            android:text="지각"/>
+
+                        <TextView
+                            android:id="@+id/caa_real_time_check2_jiwon_absence"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:textSize="25sp"
+                            android:textColor="@color/colorDarkGray"
+                            android:text="결석"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <!--end김지원 레이아웃-->
+
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
                 android:layout_marginTop="20dp"
-                android:layout_marginLeft="30dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:background="@color/colorGray" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="25sp"
-                    android:textColor="@color/colorBlack"
-                    android:text="김지원20152020"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/caa_real_time_check2_jiwon_attend"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="25sp"
-                        android:textColor="@color/colorDarkGray"
-                        android:text="출석"/>
-
-                    <TextView
-                        android:id="@+id/caa_real_time_check2_jiwon_late"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="25sp"
-                        android:textColor="@color/colorDarkGray"
-                        android:text="지각"/>
-
-                    <TextView
-                        android:id="@+id/caa_real_time_check2_jiwon_absence"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="25sp"
-                        android:textColor="@color/colorDarkGray"
-                        android:text="결석"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
+            <!--김지일 레이아웃-->
             <LinearLayout
-                android:layout_marginTop="40dp"
-                android:layout_marginLeft="30dp"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="25sp"
-                    android:textColor="@color/colorBlack"
-                    android:text="김지일20132020"/>
+                <ImageView
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="bottom"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:src="@drawable/user_jill"/>
+
 
                 <LinearLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/caa_real_time_check2_jillkim_attend"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="25sp"
-                        android:textColor="@color/colorDarkGray"
-                        android:text="출석"/>
 
                     <TextView
-                        android:id="@+id/caa_real_time_check2_jillkim_late"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="wrap_content"
                         android:textSize="25sp"
-                        android:textColor="@color/colorDarkGray"
-                        android:text="지각"/>
+                        android:textColor="@color/colorBlack"
+                        android:text="김지일   20132020"/>
 
-                    <TextView
-                        android:id="@+id/caa_real_time_check2_jillkim_absence"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="25sp"
-                        android:textColor="@color/colorDarkGray"
-                        android:text="결석"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/caa_real_time_check2_jiilkim_attend"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:textSize="25sp"
+                            android:textColor="@color/colorDarkGray"
+                            android:text="출석"/>
+
+                        <TextView
+                            android:id="@+id/caa_real_time_check2_jiilkim_late"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:textSize="25sp"
+                            android:textColor="@color/colorDarkGray"
+                            android:text="지각"/>
+
+                        <TextView
+                            android:id="@+id/caa_real_time_check2_jiilkim_absence"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:textSize="25sp"
+                            android:textColor="@color/colorDarkGray"
+                            android:text="결석"/>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-            </LinearLayout>
 
+
+            </LinearLayout>
+            <!--end김지일 레이아웃-->
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorGray" />
+
+            <!--신지윤 레이아웃-->
             <LinearLayout
-                android:layout_marginTop="40dp"
-                android:layout_marginLeft="30dp"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="25sp"
-                    android:textColor="@color/colorBlack"
-                    android:text="김준수20162020"/>
+                <ImageView
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="bottom"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:src="@drawable/user_jiyoon"/>
 
                 <LinearLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/caa_real_time_check2_junsu_attend"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
-                        android:text="출석"
-                        android:textColor="@color/colorDarkGray"
-                        android:textSize="25sp"/>
-
-                    <TextView
-                        android:id="@+id/caa_real_time_check2_junsu_late"
-                        android:layout_width="wrap_content"
+                        android:layout_marginBottom="10dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp"
                         android:textSize="25sp"
-                        android:textColor="@color/colorDarkGray"
-                        android:text="지각"/>
+                        android:textColor="@color/colorBlack"
+                        android:text="신지윤   20162020"/>
 
-                    <TextView
-                        android:id="@+id/caa_real_time_check2_junsu_absence"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="25sp"
-                        android:textColor="@color/colorDarkGray"
-                        android:text="결석"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/caa_real_time_check2_jiyoon_attend"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:text="출석"
+                            android:textColor="@color/colorDarkGray"
+                            android:textSize="25sp"/>
+
+                        <TextView
+                            android:id="@+id/caa_real_time_check2_jiyoon_late"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:textSize="25sp"
+                            android:textColor="@color/colorDarkGray"
+                            android:text="지각"/>
+
+                        <TextView
+                            android:id="@+id/caa_real_time_check2_jiyoon_absence"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:textSize="25sp"
+                            android:textColor="@color/colorDarkGray"
+                            android:text="결석"/>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
+            <!--end 신지윤 레이아웃-->
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorGray" />
+
+            <!--스폰지밥 레이아웃-->
             <LinearLayout
-                android:layout_marginTop="40dp"
-                android:layout_marginLeft="30dp"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="25sp"
-                    android:textColor="@color/colorBlack"
-                    android:text="김지원20152020"/>
+                <ImageView
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="bottom"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:src="@drawable/user_spongebob"/>
 
                 <LinearLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="25sp"
-                        android:textColor="@color/colorDarkGray"
-                        android:text="출석"/>
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="wrap_content"
                         android:textSize="25sp"
-                        android:textColor="@color/colorDarkGray"
-                        android:text="지각"/>
+                        android:textColor="@color/colorBlack"
+                        android:text="스폰지밥  20152020"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="25sp"
-                        android:textColor="@color/colorDarkGray"
-                        android:text="결석"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/caa_real_time_check2_sp_attend"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:textSize="25sp"
+                            android:textColor="@color/colorDarkGray"
+                            android:text="출석"/>
+
+                        <TextView
+                            android:id="@+id/caa_real_time_check2_sp_late"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:textSize="25sp"
+                            android:textColor="@color/colorDarkGray"
+                            android:text="지각"/>
+
+                        <TextView
+                            android:id="@+id/caa_real_time_check2_sp_absence"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:textSize="25sp"
+                            android:textColor="@color/colorDarkGray"
+                            android:text="결석"/>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
+            <!--end 스폰지밥 레이아웃-->
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorGray" />
+
+            <!--뚱이 레이아웃-->
             <LinearLayout
-                android:layout_marginTop="40dp"
-                android:layout_marginLeft="30dp"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="25sp"
-                    android:textColor="@color/colorBlack"
-                    android:text="김지일 20132020"/>
+                <ImageView
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="bottom"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:src="@drawable/user_ddunge"/>
 
                 <LinearLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="25sp"
-                        android:textColor="@color/colorDarkGray"
-                        android:text="출석"/>
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="wrap_content"
                         android:textSize="25sp"
-                        android:textColor="@color/colorDarkGray"
-                        android:text="지각"/>
+                        android:textColor="@color/colorBlack"
+                        android:text="뚱이    20132020"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/caa_real_time_check2_dd_attend"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:textSize="25sp"
+                            android:textColor="@color/colorDarkGray"
+                            android:text="출석"/>
+
+                        <TextView
+                            android:id="@+id/caa_real_time_check2_dd_late"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:textSize="25sp"
+                            android:textColor="@color/colorDarkGray"
+                            android:text="지각"/>
+
+                        <TextView
+                            android:id="@+id/caa_real_time_check2_dd_absence"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:textSize="25sp"
+                            android:textColor="@color/colorDarkGray"
+                            android:text="결석"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+            <!--end 뚱이 레이아웃-->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorGray" />
+
+
+            <!--new1 레이아웃-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="bottom"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:src="@drawable/user_woman"/>
+
+                <LinearLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
                     <TextView
+                        android:id="@+id/caa_real_time_check2_new1"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="wrap_content"
                         android:textSize="25sp"
-                        android:textColor="@color/colorDarkGray"
-                        android:text="결석"/>
+                        android:textColor="@color/colorBlack"
+                        android:text="Friend"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/caa_real_time_check2_new1_attend"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:textSize="25sp"
+                            android:textColor="@color/colorDarkGray"
+                            android:text="출석"/>
+
+                        <TextView
+                            android:id="@+id/caa_real_time_check2_new1_late"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:textSize="25sp"
+                            android:textColor="@color/colorDarkGray"
+                            android:text="지각"/>
+
+                        <TextView
+                            android:id="@+id/caa_real_time_check2_new1_absence"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:textSize="25sp"
+                            android:textColor="@color/colorDarkGray"
+                            android:text="결석"/>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
+            <!--end new1 레이아웃-->
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorGray" />
 
+            <!--new2 레이아웃-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <ImageView
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="bottom"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:src="@drawable/user_woman"/>
+
+                <LinearLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/caa_real_time_check2_new2"
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="25sp"
+                        android:textColor="@color/colorBlack"
+                        android:text="Friend"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/caa_real_time_check2_new2_attend"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:textSize="25sp"
+                            android:textColor="@color/colorDarkGray"
+                            android:text="출석"/>
+
+                        <TextView
+                            android:id="@+id/caa_real_time_check2_new2_late"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:textSize="25sp"
+                            android:textColor="@color/colorDarkGray"
+                            android:text="지각"/>
+
+                        <TextView
+                            android:id="@+id/caa_real_time_check2_new2_absence"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:textSize="25sp"
+                            android:textColor="@color/colorDarkGray"
+                            android:text="결석"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <!--end new2 레이아웃-->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorGray" />
+
+            <!--new3 레이아웃-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="bottom"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:src="@drawable/user_woman"/>
+
+                <LinearLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/caa_real_time_check2_new3"
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="25sp"
+                        android:textColor="@color/colorBlack"
+                        android:text="Friend"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/caa_real_time_check2_new3_attend"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:textSize="25sp"
+                            android:textColor="@color/colorDarkGray"
+                            android:text="출석"/>
+
+                        <TextView
+                            android:id="@+id/caa_real_time_check2_new3_late"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:textSize="25sp"
+                            android:textColor="@color/colorDarkGray"
+                            android:text="지각"/>
+
+                        <TextView
+                            android:id="@+id/caa_real_time_check2_new3_absence"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:textSize="25sp"
+                            android:textColor="@color/colorDarkGray"
+                            android:text="결석"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <!--end new3 레이아웃-->
 
 
 
@@ -353,4 +691,4 @@
 
 
 
-</LinearLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

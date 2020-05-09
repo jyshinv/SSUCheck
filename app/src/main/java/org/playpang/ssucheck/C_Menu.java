@@ -31,6 +31,7 @@ public class C_Menu extends AppCompatActivity {
         ActionBar bar = getSupportActionBar();
         bar.hide();
 
+        //three dot 버튼 눌렀을 때 작동
         btn = findViewById(R.id.c_menu_threedot);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +58,7 @@ public class C_Menu extends AppCompatActivity {
 
                                 break;
                             case R.id.m2:
-                                Toast.makeText(getApplication(),"세팅",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplication(),"settings",Toast.LENGTH_SHORT).show();
                                 break;
                             default:
                                 break;
