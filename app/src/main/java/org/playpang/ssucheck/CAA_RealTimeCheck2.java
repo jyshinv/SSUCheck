@@ -15,6 +15,8 @@ import android.os.Bundle;
 import android.os.Message;
 import android.provider.ContactsContract;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +42,8 @@ import java.util.Map;
 public class CAA_RealTimeCheck2 extends AppCompatActivity {
     private DatabaseReference mDatabaseReference;   // 데이터베이스의 주소를 저장합니다.
     private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mDatabaseReference2;   // 데이터베이스의 주소를 저장합니다.
+    private FirebaseDatabase mFirebaseDatabase2;
 
     Intent intent;
     TextView[] textView = new TextView[24];
@@ -57,6 +61,7 @@ public class CAA_RealTimeCheck2 extends AppCompatActivity {
 
     //Child변수
     String currentchild = "AttendanceTest";
+    String ckresult;
 
     private SwipeRefreshLayout swipe;
     private int cnt =1;
@@ -65,6 +70,8 @@ public class CAA_RealTimeCheck2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_caa__real_time_check2);
+
+
 
 
 
@@ -110,65 +117,32 @@ public class CAA_RealTimeCheck2 extends AppCompatActivity {
         //날짜,시간 달기
         time.setText(currentTime());
 
+        //파이어베이스
+        FireBaseSingle();
+        FireBaseValue();
+
+
+
         //새로고침
         swipe = findViewById(R.id.caa_real_time_check2_ll);
-
         swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 
             @Override
             public void onRefresh() {//새로고침 했을 때 내용
-                //새로고침 시 바뀌는 내용 - 시간
+                //새로고침 시 바뀌는 내용1 - 시간
                 time.setText(currentTime());
 
-                //새로고침 시 바뀌는 내용 - db내용
-                //textview 전부 다시 darkgray로 설정
+
+                //새로고침 시 바뀌는 내용2 - textview 전부 다시 darkgray로 설정
                 for(int i=0; i<24; i++){
                     textView[i].setTextColor(Color.parseColor(DarkGray));
                 }
 
-                //파이어베이스 데이터베이스에서 데이터 불러오기
-                mFirebaseDatabase = FirebaseDatabase.getInstance();     // 현재 데이터 베이스를 접근할 수 있는 진입점 받기
-                mDatabaseReference = mFirebaseDatabase.getReference();
-                mDatabaseReference.child(currentchild).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                        RealTimeAttendenceResult rr = dataSnapshot.getValue(RealTimeAttendenceResult.class);
-
-                        //주의 사항
-                        //rr.~에 데이터가 안넘어 오는 경우 -> NullPointerException 생기면서 앱꺼짐 현상 생김
-                        //따라서 꼭 rr.~ != null인 경우로 예외 처리 넣어주기
-
-                        //함수 호출
-                        //출결결과, 3개의 TextView를 넘김
-                        AR(rr.jiwonkim,textView[0],textView[1],textView[2]);
-                        AR(rr.jiilkim,textView[3],textView[4],textView[5]);
-                        AR(rr.jiyoonshin,textView[6],textView[7],textView[8]);
-                        AR(rr.spongebob,textView[9],textView[10],textView[11]);
-                        AR(rr.ddunge,textView[12],textView[13],textView[14]);
-
-                        //추가로 관람객 3명의 결과
-                        AR_new(rr.new1,new1tv,textView[15],textView[16],textView[17]);
-                        AR_new(rr.new2,new2tv,textView[18],textView[19],textView[20]);
-                        AR_new(rr.new3,new3tv,textView[21],textView[22],textView[23]);
-
-                        //post함수 일단 이렇게 두고 나중에 고칠 것
-                        post(rr.jiwonkim);
-
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-
-
+                //새로고침 시 바뀌는 내용3 - db내용
+                FireBaseSingle();
 
                 //새로 고침 완료했을 땐 꼭 setRefreshing함수를 false로 설정해줘야함
                 swipe.setRefreshing(false);
-
 
 
             }
@@ -187,43 +161,7 @@ public class CAA_RealTimeCheck2 extends AppCompatActivity {
         bar.setSubtitle(eng);
 
 
-        //파이어베이스 데이터베이스에서 데이터 불러오기
-        mFirebaseDatabase = FirebaseDatabase.getInstance();     // 현재 데이터 베이스를 접근할 수 있는 진입점 받기
-        mDatabaseReference = mFirebaseDatabase.getReference();
-        mDatabaseReference.child(currentchild).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                RealTimeAttendenceResult rr = dataSnapshot.getValue(RealTimeAttendenceResult.class);
-
-                //주의 사항
-                //rr.~에 데이터가 안넘어 오는 경우 -> NullPointerException 생기면서 앱꺼짐 현상 생김
-                //따라서 꼭 rr.~ != null인 경우로 예외 처리 넣어주기
-
-                //함수 호출
-                //출결결과, 3개의 TextView를 넘김
-                AR(rr.jiwonkim,textView[0],textView[1],textView[2]);
-                AR(rr.jiilkim,textView[3],textView[4],textView[5]);
-                AR(rr.jiyoonshin,textView[6],textView[7],textView[8]);
-                AR(rr.spongebob,textView[9],textView[10],textView[11]);
-                AR(rr.ddunge,textView[12],textView[13],textView[14]);
-
-                //추가로 관람객 3명의 결과
-                AR_new(rr.new1,new1tv,textView[15],textView[16],textView[17]);
-                AR_new(rr.new2,new2tv,textView[18],textView[19],textView[20]);
-                AR_new(rr.new3,new3tv,textView[21],textView[22],textView[23]);
-
-
-                post(rr.jiwonkim);
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
 
 
@@ -299,6 +237,120 @@ public class CAA_RealTimeCheck2 extends AppCompatActivity {
         childUpdates.put("/jwkim_db_checkresult/" + currentTime(), postValues);
         mDatabaseReference.updateChildren(childUpdates);
     }
+
+
+    public void FireBaseSingle(){
+        //파이어베이스 데이터베이스에서 데이터 불러오기
+        mFirebaseDatabase = FirebaseDatabase.getInstance();     // 현재 데이터 베이스를 접근할 수 있는 진입점 받기
+        mDatabaseReference = mFirebaseDatabase.getReference();
+        mDatabaseReference.child(currentchild).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                RealTimeAttendenceResult rr = dataSnapshot.getValue(RealTimeAttendenceResult.class);
+
+                //주의 사항
+                //rr.~에 데이터가 안넘어 오는 경우 -> NullPointerException 생기면서 앱꺼짐 현상 생김
+                //따라서 꼭 rr.~ != null인 경우로 예외 처리 넣어주기
+
+                //함수 호출
+                //출결결과, 3개의 TextView를 넘김
+                AR(rr.jiwonkim,textView[0],textView[1],textView[2]);
+                AR(rr.jiilkim,textView[3],textView[4],textView[5]);
+                AR(rr.jiyoonshin,textView[6],textView[7],textView[8]);
+                AR(rr.spongebob,textView[9],textView[10],textView[11]);
+                AR(rr.ddunge,textView[12],textView[13],textView[14]);
+
+                //추가로 관람객 3명의 결과
+                AR_new(rr.new1,new1tv,textView[15],textView[16],textView[17]);
+                AR_new(rr.new2,new2tv,textView[18],textView[19],textView[20]);
+                AR_new(rr.new3,new3tv,textView[21],textView[22],textView[23]);
+
+
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public void FireBaseValue() {
+        //파이어베이스 데이터베이스에서 데이터 불러오기
+        mFirebaseDatabase = FirebaseDatabase.getInstance();     // 현재 데이터 베이스를 접근할 수 있는 진입점 받기
+        mDatabaseReference = mFirebaseDatabase.getReference();
+        mDatabaseReference2 = mFirebaseDatabase.getReference();
+        //final String key = mDatabaseReference2.child(currentchild).child("jiwonkim").getKey();
+        //Log.e("key값",key);
+
+
+        mDatabaseReference.child(currentchild).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                RealTimeAttendenceResult rr = dataSnapshot.getValue(RealTimeAttendenceResult.class);
+
+                //주의 사항
+                //rr.~에 데이터가 안넘어 오는 경우 -> NullPointerException 생기면서 앱꺼짐 현상 생김
+                //따라서 꼭 rr.~ != null인 경우로 예외 처리 넣어주기
+
+                //함수 호출
+                //출결결과, 3개의 TextView를 넘김
+//                AR(rr.jiwonkim,textView[0],textView[1],textView[2]);
+//                AR(rr.jiilkim,textView[3],textView[4],textView[5]);
+//                AR(rr.jiyoonshin,textView[6],textView[7],textView[8]);
+//                AR(rr.spongebob,textView[9],textView[10],textView[11]);
+//                AR(rr.ddunge,textView[12],textView[13],textView[14]);
+//
+//                //추가로 관람객 3명의 결과
+//                AR_new(rr.new1,new1tv,textView[15],textView[16],textView[17]);
+//                AR_new(rr.new2,new2tv,textView[18],textView[19],textView[20]);
+//                AR_new(rr.new3,new3tv,textView[21],textView[22],textView[23]);
+
+                //지켜보다가 값이 변경되면 post해주는 함수
+                //그냥 post함수 쓰면 jiwonkim외에 다른 사람이 변경되어도 아래 if문이 실행됨
+                if (!rr.jiwonkim.equals("bc")) {
+                    post(rr.jiwonkim); //post함수 호출
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    //액션바에 버튼 집어넣기
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.back_btn, menu);
+        return true;
+    }
+
+
+    //버튼 눌렀을 때의 반응
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if(id == R.id.back_btn){
+            Intent intent = new Intent(getApplicationContext(), CA_RealTimeCheck.class);
+            startActivity(intent);
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
+
 
 
 

@@ -50,12 +50,15 @@ public class CBA_MyCheckSubject1Adapter extends BaseAdapter {
         // 화면에 표시될 View(Layout이 inflate된)으로부터 위젯에 대한 참조 획득
         TextView tv1 = convertView.findViewById(R.id.item_date);
         TextView tv2 = convertView.findViewById(R.id.item_checkresult);
+        TextView tv0 = convertView.findViewById(R.id.item_database);
 
         // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
         jw_db_checkresult subitem = listViewItemList.get(position);
 
         // 아이템 내 각 위젯에 데이터 반영
+        tv0.setText("데이터베이스");
         tv1.setText(subitem.getcheckTime());
+
 
         //tv2에 출석결과 넣기
         if(subitem.getcheckResult().equals("attend")){

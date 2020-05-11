@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -78,74 +80,58 @@ public class CBA_MyCheckSubject1 extends AppCompatActivity {
         mFirebaseDatabase = FirebaseDatabase.getInstance();     // 현재 데이터 베이스를 접근할 수 있는 진입점 받기
         mDatabaseReference = mFirebaseDatabase.getReference();
         getFirebaseDatabase();
-//        String key = mDatabaseReference.child("jwkim_db_checkresult").getKey();
-//        Log.e("key값",key);
-//        mDatabaseReference.child("jwkim_db_checkresult").addChildEventListener(new ChildEventListener() {
-//            @Override
-//            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//
-//                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-//                    String key = snapshot.getKey();
-//                    jw_db_checkresult jdc = snapshot.getValue(jw_db_checkresult.class);
-//                    String[] result = {jdc.checkTime, jdc.checkResult};
-//
-//                    ((CBA_MyCheckSubject1Adapter) adapter).addItem(result[0],result[1]);
-//                    ((CBA_MyCheckSubject1Adapter) adapter).notifyDataSetChanged();
-//
-//                }
-//
-//
-//            }
-//
-//            @Override
-//            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//
-//            }
-//
-//            @Override
-//            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-//
-//            }
-//
-//            @Override
-//            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
 
 
 
 
     }//onCreate
 
-    private void getFirebaseDatabase() {
+    private void getFirebaseDatabase(){
         final ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Log.d("onDataChange", "Data is Updated");
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    String key = snapshot.getKey();
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     jw_db_checkresult jdc = snapshot.getValue(jw_db_checkresult.class);
                     String[] result = {jdc.checkTime, jdc.checkResult};
 
-                    ((CBA_MyCheckSubject1Adapter) adapter).addItem(result[0],result[1]);
+                    ((CBA_MyCheckSubject1Adapter) adapter).addItem(result[0], result[1]);
                     ((CBA_MyCheckSubject1Adapter) adapter).notifyDataSetChanged();
-
                 }
-
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+        mDatabaseReference.child("jwkim_db_checkresult").addListenerForSingleValueEvent(postListener);
+
+
+    }
+
+    private void getFirebaseDatabaseValue(){
+        final ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    jw_db_checkresult jdc = snapshot.getValue(jw_db_checkresult.class);
+                    String[] result = {jdc.checkTime, jdc.checkResult};
+
+                    ((CBA_MyCheckSubject1Adapter) adapter).addItem(result[0], result[1]);
+                    ((CBA_MyCheckSubject1Adapter) adapter).notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         };
         mDatabaseReference.child("jwkim_db_checkresult").addValueEventListener(postListener);
 
+
     }
+
 
     //현재 시간을 String값으로 리턴해주는 함수
     public String currentTime(){
@@ -155,6 +141,28 @@ public class CBA_MyCheckSubject1 extends AppCompatActivity {
         String currentTime = mFormat.format(date);
         return currentTime;
 
+    }
+
+    //액션바에 버튼 집어넣기
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.back_btn, menu);
+        return true;
+    }
+
+
+    //버튼 눌렀을 때의 반응
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if(id == R.id.back_btn){
+            Intent intent = new Intent(getApplicationContext(), CB_MyCheck.class);
+            startActivity(intent);
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 

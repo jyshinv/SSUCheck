@@ -2,7 +2,11 @@ package org.playpang.ssucheck;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -31,5 +35,27 @@ public class CB_MyCheck extends AppCompatActivity {
         ((CB_RealTimeCheckAdapter) adapter).addItem("디지털미디어원리및실습(가)[2154266025]","Digital Media Principles and practice");
         ((CB_RealTimeCheckAdapter) adapter).addItem("컴퓨터프로그래밍(다)[213356026]","Computer Programming");
         ((CB_RealTimeCheckAdapter) adapter).addItem("졸업프로젝트(가)(온&오프)[21589906]","Thesis Seminar");
+    }
+
+    //액션바에 버튼 집어넣기
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.back_btn, menu);
+        return true;
+    }
+
+
+    //버튼 눌렀을 때의 반응
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if(id == R.id.back_btn){
+            Intent intent = new Intent(getApplicationContext(), C_Menu.class);
+            startActivity(intent);
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

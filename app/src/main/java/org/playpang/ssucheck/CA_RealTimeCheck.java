@@ -49,6 +49,7 @@ public class CA_RealTimeCheck extends AppCompatActivity {
     }
 
 
+    //버튼 눌렀을 때의 반응
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
