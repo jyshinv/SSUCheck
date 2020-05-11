@@ -55,16 +55,16 @@ public class CBA_MyCheckSubject1Adapter extends BaseAdapter {
         jw_db_checkresult subitem = listViewItemList.get(position);
 
         // 아이템 내 각 위젯에 데이터 반영
-        tv1.setText(subitem.getJw_time());
+        tv1.setText(subitem.getcheckTime());
 
         //tv2에 출석결과 넣기
-        if(subitem.getCheckresult().equals("attend")){
+        if(subitem.getcheckResult().equals("attend")){
             tv2.setText("출석");
             tv2.setTextColor(Color.parseColor(Green));
-        }else if(subitem.getCheckresult().equals("late")){
+        }else if(subitem.getcheckResult().equals("late")){
             tv2.setText("지각");
             tv2.setTextColor(Color.parseColor(Orange));
-        }else if(subitem.getCheckresult().equals("absence")){
+        }else if(subitem.getcheckResult().equals("absence")){
             tv2.setText("결석");
             tv2.setTextColor(Color.parseColor(Red));
         }
@@ -94,8 +94,8 @@ public class CBA_MyCheckSubject1Adapter extends BaseAdapter {
     public void addItem(String jw_time, String checkresult) {
         jw_db_checkresult item = new jw_db_checkresult();
 
-        item.setJw_time(jw_time);
-        item.setCheckresult(checkresult);
+        item.setcheckTime(jw_time);
+        item.setcheckResult(checkresult);
 
         listViewItemList.add(item);
     }

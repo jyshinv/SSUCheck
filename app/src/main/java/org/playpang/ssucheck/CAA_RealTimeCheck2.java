@@ -213,6 +213,7 @@ public class CAA_RealTimeCheck2 extends AppCompatActivity {
                 AR_new(rr.new2,new2tv,textView[18],textView[19],textView[20]);
                 AR_new(rr.new3,new3tv,textView[21],textView[22],textView[23]);
 
+
                 post(rr.jiwonkim);
 
 
