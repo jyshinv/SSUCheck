@@ -13,6 +13,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Message;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,29 +25,38 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.playpang.ssucheck.data.DatabaseCheckResult;
+import org.playpang.ssucheck.data.FirebasePost;
 import org.playpang.ssucheck.data.RealTimeAttendenceResult;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
-public class CAA_RealTimeCheck2 extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
+public class CAA_RealTimeCheck2 extends AppCompatActivity {
     private DatabaseReference mDatabaseReference;   // 데이터베이스의 주소를 저장합니다.
     private FirebaseDatabase mFirebaseDatabase;
 
     Intent intent;
     TextView[] textView = new TextView[24];
+
     TextView time;
     TextView new1tv;
     TextView new2tv;
     TextView new3tv;
 
+    //색상 변수
     String Green = "#1CC62F";
     String Orange = "#FFBA5C";
     String Red = "#FF1010";
+    String DarkGray = "#47525E";
 
+    //Child변수
+    String currentchild = "AttendanceTest";
 
     private SwipeRefreshLayout swipe;
     private int cnt =1;
@@ -96,12 +106,73 @@ public class CAA_RealTimeCheck2 extends AppCompatActivity implements SwipeRefres
         textView[22] = findViewById(R.id.caa_real_time_check2_new3_late);
         textView[23] = findViewById(R.id.caa_real_time_check2_new3_absence);
 
+
+        //날짜,시간 달기
+        time.setText(currentTime());
+
         //새로고침
         swipe = findViewById(R.id.caa_real_time_check2_ll);
-        swipe.setOnRefreshListener(this);
-        swipe.setEnabled(false);
-        swipe.setRefreshing(true);
 
+        swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+
+            @Override
+            public void onRefresh() {//새로고침 했을 때 내용
+                //새로고침 시 바뀌는 내용 - 시간
+                time.setText(currentTime());
+
+                //새로고침 시 바뀌는 내용 - db내용
+                //textview 전부 다시 darkgray로 설정
+                for(int i=0; i<24; i++){
+                    textView[i].setTextColor(Color.parseColor(DarkGray));
+                }
+
+                //파이어베이스 데이터베이스에서 데이터 불러오기
+                mFirebaseDatabase = FirebaseDatabase.getInstance();     // 현재 데이터 베이스를 접근할 수 있는 진입점 받기
+                mDatabaseReference = mFirebaseDatabase.getReference();
+                mDatabaseReference.child(currentchild).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        RealTimeAttendenceResult rr = dataSnapshot.getValue(RealTimeAttendenceResult.class);
+
+                        //주의 사항
+                        //rr.~에 데이터가 안넘어 오는 경우 -> NullPointerException 생기면서 앱꺼짐 현상 생김
+                        //따라서 꼭 rr.~ != null인 경우로 예외 처리 넣어주기
+
+                        //함수 호출
+                        //출결결과, 3개의 TextView를 넘김
+                        AR(rr.jiwonkim,textView[0],textView[1],textView[2]);
+                        AR(rr.jiilkim,textView[3],textView[4],textView[5]);
+                        AR(rr.jiyoonshin,textView[6],textView[7],textView[8]);
+                        AR(rr.spongebob,textView[9],textView[10],textView[11]);
+                        AR(rr.ddunge,textView[12],textView[13],textView[14]);
+
+                        //추가로 관람객 3명의 결과
+                        AR_new(rr.new1,new1tv,textView[15],textView[16],textView[17]);
+                        AR_new(rr.new2,new2tv,textView[18],textView[19],textView[20]);
+                        AR_new(rr.new3,new3tv,textView[21],textView[22],textView[23]);
+
+                        //post함수 일단 이렇게 두고 나중에 고칠 것
+                        post(rr.jiwonkim);
+
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
+
+                //새로 고침 완료했을 땐 꼭 setRefreshing함수를 false로 설정해줘야함
+                swipe.setRefreshing(false);
+
+
+
+            }
+        });
 
 
         //이전 창에서 보낸 정보 받기
@@ -115,25 +186,15 @@ public class CAA_RealTimeCheck2 extends AppCompatActivity implements SwipeRefres
         bar.setTitle(kor);
         bar.setSubtitle(eng);
 
-        //날짜,시간 달기
-        long now = System.currentTimeMillis();
-        Date date = new Date(now);
-        SimpleDateFormat mFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        String currenttime = mFormat.format(date);
-        time.setText(currenttime);
 
         //파이어베이스 데이터베이스에서 데이터 불러오기
         mFirebaseDatabase = FirebaseDatabase.getInstance();     // 현재 데이터 베이스를 접근할 수 있는 진입점 받기
         mDatabaseReference = mFirebaseDatabase.getReference();
-
-
-        mDatabaseReference.child("Attendance").addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabaseReference.child(currentchild).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 RealTimeAttendenceResult rr = dataSnapshot.getValue(RealTimeAttendenceResult.class);
-                //해야할 일
-                //다 함수로 만들고, rr.~ 매개변수로 한 함수.
 
                 //주의 사항
                 //rr.~에 데이터가 안넘어 오는 경우 -> NullPointerException 생기면서 앱꺼짐 현상 생김
@@ -152,6 +213,8 @@ public class CAA_RealTimeCheck2 extends AppCompatActivity implements SwipeRefres
                 AR_new(rr.new2,new2tv,textView[18],textView[19],textView[20]);
                 AR_new(rr.new3,new3tv,textView[21],textView[22],textView[23]);
 
+                post(rr.jiwonkim);
+
 
             }
 
@@ -165,6 +228,8 @@ public class CAA_RealTimeCheck2 extends AppCompatActivity implements SwipeRefres
 
     } //onCreate
 
+
+    //5명에 대한 함수
     public void AR(String value, TextView Attend, TextView Late, TextView Absence ){
         if(value != null){ //값이 db로 부터 넘어온다면
             if(value.equals("attend")){
@@ -177,12 +242,13 @@ public class CAA_RealTimeCheck2 extends AppCompatActivity implements SwipeRefres
                 //아무일도 일어나지 않음
             }
 
-        }else{ //넘어오지 않는다면
-
+        }else{ //값이 db로부터 넘어오지 않는 경우, 5명은 무조건 넘어옴 (사진 5개는 무조건 있음)
+            //혹시 null일 경우 대비해서 놔두기
 
         }
     }
 
+    //new1, new2, new3에 대한 함수
     public void AR_new(String value,TextView nametv ,TextView Attend, TextView Late, TextView Absence){
 
 
@@ -208,17 +274,35 @@ public class CAA_RealTimeCheck2 extends AppCompatActivity implements SwipeRefres
                 //아무일도 일어나지 않음
             }
 
-        }else{ //넘어오지 않는다면 결석인 상태임
+        }else{ //값이 db로부터 넘어오지 않는다면 결석인 상태임
             Absence.setTextColor(Color.parseColor(Red));
-
         }
     }
 
-
-    //새로고침 했을 때의 내용
-    @Override
-    public void onRefresh() {
-       Toast.makeText(this,"새로고침",Toast.LENGTH_SHORT).show();
-
+    //현재 시간을 String값으로 리턴해주는 함수
+    public String currentTime(){
+        long now = System.currentTimeMillis();
+        Date date = new Date(now);
+        SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String currentTime = mFormat.format(date);
+        return currentTime;
     }
+
+    //Attendance의 값이 변경될 때마다 그 시간을 db에 넣기
+    public void post(String checkresult){
+        Map<String, Object> childUpdates = new HashMap<>();
+        Map<String, Object> postValues = null;
+        DatabaseCheckResult post = new DatabaseCheckResult(currentTime(),checkresult);
+        postValues = post.toMap();
+
+        childUpdates.put("/jwkim_db_checkresult/" + currentTime(), postValues);
+        mDatabaseReference.updateChildren(childUpdates);
+    }
+
+
+
+
+
+
+
 }//class

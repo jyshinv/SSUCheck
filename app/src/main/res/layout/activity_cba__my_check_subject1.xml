@@ -75,11 +75,19 @@
             android:layout_marginTop="350dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="900dp">
+            android:layout_height="900dp"
+            android:fillViewport="true">
 
+            <ListView
+                android:id="@+id/cba_my_check_subject1_lv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:dividerHeight="0px"
+                android:divider="#FFFFFF"
+                tools:listitem="@layout/item_databasecheckresult">
 
+            </ListView>
 
 
 
