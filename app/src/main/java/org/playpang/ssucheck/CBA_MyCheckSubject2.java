@@ -1,14 +1,25 @@
 package org.playpang.ssucheck;
 
 import android.content.Intent;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.playpang.ssucheck.data.RealTimeAttendenceResult;
 
 public class CBA_MyCheckSubject2 extends AppCompatActivity {
     Intent intent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,4 +57,6 @@ public class CBA_MyCheckSubject2 extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }

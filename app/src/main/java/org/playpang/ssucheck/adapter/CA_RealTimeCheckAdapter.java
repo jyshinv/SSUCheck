@@ -55,6 +55,7 @@ public class CA_RealTimeCheckAdapter extends BaseAdapter {//BaseAdapter상속 �
         clickArea.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
 
+                //눌렀을 때 item 정보 가게끔
                 String kor = listViewItemList.get(pos).getKorSubject();
                 String eng = listViewItemList.get(pos).getEngSubject();
                 if(eng.equals("Database")){

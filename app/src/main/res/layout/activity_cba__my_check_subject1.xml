@@ -43,11 +43,12 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="40dp"
                     android:textColor="@color/colorBlack"
-                    android:text="김지원 20152020"/>
+                    tools:text="김지원 20152020"/>
 
                 <TextView
                     android:layout_width="wrap_content"

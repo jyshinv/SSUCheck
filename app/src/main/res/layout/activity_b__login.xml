@@ -21,7 +21,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/colorGray"
-        android:text="숭실대학교 안면인식 출결 시스템"
+        android:textSize="24sp"
+        android:text="숭실대학교 자동 안면인식 출결 시스템"
         android:gravity="center"/>
 
     <LinearLayout

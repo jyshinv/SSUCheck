@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -36,6 +37,7 @@ public class C_Menu extends AppCompatActivity {
     Intent intent;
     ImageButton btn;
     String currentchild ="AttendanceTest";
+    TextView tv1;
 
     //데이터베이스
     private DatabaseReference mDatabaseReference;   // 데이터베이스의 주소를 저장합니다.
@@ -47,8 +49,11 @@ public class C_Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_c__menu);
 
+        //사용할 변수
+        tv1 = findViewById(R.id.c_menu_name);
+
         //메뉴화면에서도 바뀌게
-        FireBaseValue();
+        //FireBaseValue();
 
 
         //타이틀바 숨기기

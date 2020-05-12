@@ -474,7 +474,7 @@
                     android:layout_gravity="bottom"
                     android:layout_width="85dp"
                     android:layout_height="85dp"
-                    android:src="@drawable/user_woman"/>
+                    android:src="@drawable/user_new1"/>
 
                 <LinearLayout
                     android:layout_marginTop="20dp"
@@ -547,7 +547,7 @@
                     android:layout_gravity="bottom"
                     android:layout_width="85dp"
                     android:layout_height="85dp"
-                    android:src="@drawable/user_woman"/>
+                    android:src="@drawable/user_new2"/>
 
                 <LinearLayout
                     android:layout_marginTop="20dp"
@@ -620,7 +620,7 @@
                     android:layout_gravity="bottom"
                     android:layout_width="85dp"
                     android:layout_height="85dp"
-                    android:src="@drawable/user_woman"/>
+                    android:src="@drawable/user_new3"/>
 
                 <LinearLayout
                     android:layout_marginTop="20dp"

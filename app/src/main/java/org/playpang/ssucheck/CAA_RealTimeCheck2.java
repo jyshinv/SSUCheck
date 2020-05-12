@@ -39,6 +39,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+
 public class CAA_RealTimeCheck2 extends AppCompatActivity {
     private DatabaseReference mDatabaseReference;   // 데이터베이스의 주소를 저장합니다.
     private FirebaseDatabase mFirebaseDatabase;
@@ -47,11 +48,12 @@ public class CAA_RealTimeCheck2 extends AppCompatActivity {
 
     Intent intent;
     TextView[] textView = new TextView[24];
-
     TextView time;
     TextView new1tv;
     TextView new2tv;
     TextView new3tv;
+
+    boolean checkFlag = true;
 
     //색상 변수
     String Green = "#1CC62F";
@@ -66,11 +68,12 @@ public class CAA_RealTimeCheck2 extends AppCompatActivity {
     private SwipeRefreshLayout swipe;
     private int cnt =1;
 
+    int count =0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_caa__real_time_check2);
-
 
 
 
@@ -119,7 +122,10 @@ public class CAA_RealTimeCheck2 extends AppCompatActivity {
 
         //파이어베이스
         FireBaseSingle();
-        FireBaseValue();
+
+        //if(checkFlag==true) {
+            FireBaseValue();
+        //}
 
 
 
@@ -291,29 +297,43 @@ public class CAA_RealTimeCheck2 extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 RealTimeAttendenceResult rr = dataSnapshot.getValue(RealTimeAttendenceResult.class);
-
+                //String arr[] =new String[8];
                 //주의 사항
                 //rr.~에 데이터가 안넘어 오는 경우 -> NullPointerException 생기면서 앱꺼짐 현상 생김
-                //따라서 꼭 rr.~ != null인 경우로 예외 처리 넣어주기
+                //따라서 꼭 rr.~ != null인 경우로 예외 처리 넣어주기'
+//                boolean checkFlag2=false;
+//                int count=0;
+//                if(rr.jiwonkim.equals("bc")) {
+//                    checkFlag2 = true;
+//                }
 
-                //함수 호출
-                //출결결과, 3개의 TextView를 넘김
-//                AR(rr.jiwonkim,textView[0],textView[1],textView[2]);
-//                AR(rr.jiilkim,textView[3],textView[4],textView[5]);
-//                AR(rr.jiyoonshin,textView[6],textView[7],textView[8]);
-//                AR(rr.spongebob,textView[9],textView[10],textView[11]);
-//                AR(rr.ddunge,textView[12],textView[13],textView[14]);
-//
-//                //추가로 관람객 3명의 결과
-//                AR_new(rr.new1,new1tv,textView[15],textView[16],textView[17]);
-//                AR_new(rr.new2,new2tv,textView[18],textView[19],textView[20]);
-//                AR_new(rr.new3,new3tv,textView[21],textView[22],textView[23]);
+
 
                 //지켜보다가 값이 변경되면 post해주는 함수
                 //그냥 post함수 쓰면 jiwonkim외에 다른 사람이 변경되어도 아래 if문이 실행됨
-                if (!rr.jiwonkim.equals("bc")) {
-                    post(rr.jiwonkim); //post함수 호출
+//                if(checkFlag2==true){
+//                    if (!rr.jiwonkim.equals("bc")) { //jiwonkim이 attend, late, absence일 때
+//                        post(rr.jiwonkim); //post함수 호출
+//                        //checkFlag = false;
+//                    }else { //jiwonkim이 bc일 때
+//                        //checkFlag = true;
+//                    }
+//                }
+
+
+                if(count==0) {
+                    if (!rr.jiwonkim.equals("bc")) {
+                        post(rr.jiwonkim);
+                        count++;
+                    }
                 }
+                if(rr.jiwonkim.equals("bc")){
+                    count =0;
+                }
+
+
+
+
 
 
             }
@@ -347,6 +367,7 @@ public class CAA_RealTimeCheck2 extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 
 
 
