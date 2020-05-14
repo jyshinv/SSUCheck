@@ -328,7 +328,7 @@
                     android:layout_gravity="bottom"
                     android:layout_width="85dp"
                     android:layout_height="85dp"
-                    android:src="@drawable/user_spongebob"/>
+                    android:src="@drawable/user_son"/>
 
                 <LinearLayout
                     android:layout_marginTop="20dp"
@@ -344,7 +344,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="25sp"
                         android:textColor="@color/colorBlack"
-                        android:text="스폰지밥  20152020"/>
+                        android:text="손선경   20152020"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -400,7 +400,7 @@
                     android:layout_gravity="bottom"
                     android:layout_width="85dp"
                     android:layout_height="85dp"
-                    android:src="@drawable/user_ddunge"/>
+                    android:src="@drawable/user_chae"/>
 
                 <LinearLayout
                     android:layout_marginTop="20dp"
@@ -416,7 +416,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="25sp"
                         android:textColor="@color/colorBlack"
-                        android:text="뚱이    20132020"/>
+                        android:text="채진규   20152020"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"

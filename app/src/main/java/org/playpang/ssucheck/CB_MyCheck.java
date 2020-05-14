@@ -23,6 +23,10 @@ public class CB_MyCheck extends AppCompatActivity {
         ActionBar bar = getSupportActionBar();
         bar.setTitle("내 출결 현황");
 
+        //이전 창에서 보낸 정보 받기(name정보 이전창에서 받음)
+        Intent intent = getIntent();
+        String name =intent.getStringExtra("name");
+
         //어댑터 생성
         ListAdapter adapter = new CB_RealTimeCheckAdapter();
 
@@ -35,6 +39,7 @@ public class CB_MyCheck extends AppCompatActivity {
         ((CB_RealTimeCheckAdapter) adapter).addItem("디지털미디어원리및실습(가)[2154266025]","Digital Media Principles and practice");
         ((CB_RealTimeCheckAdapter) adapter).addItem("컴퓨터프로그래밍(다)[213356026]","Computer Programming");
         ((CB_RealTimeCheckAdapter) adapter).addItem("졸업프로젝트(가)(온&오프)[21589906]","Thesis Seminar");
+        ((CB_RealTimeCheckAdapter) adapter).addName(name);
     }
 
     //액션바에 버튼 집어넣기

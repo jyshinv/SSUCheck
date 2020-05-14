@@ -17,7 +17,8 @@
         <activity android:name=".CBA_MyCheckSubject2" />
         <activity android:name=".CBA_MyCheckSubject1" />
         <activity android:name=".CAA_RealTimeCheck2" />
-        <activity android:name=".CD_ChangeCheck" />
+        <activity android:name=".CD_ChangeCheck">
+        </activity>
         <activity android:name=".CC_TimeTable" />
         <activity android:name=".CB_MyCheck" />
         <activity android:name=".CA_RealTimeCheck" />

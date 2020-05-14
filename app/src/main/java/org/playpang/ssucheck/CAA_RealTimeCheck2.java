@@ -62,19 +62,19 @@ public class CAA_RealTimeCheck2 extends AppCompatActivity {
     String DarkGray = "#47525E";
 
     //Child변수
-    String currentchild = "AttendanceTest";
-    String ckresult;
+    String currentchild = "Attendance";
 
+    //swipe를 위한 변수
     private SwipeRefreshLayout swipe;
-    private int cnt =1;
 
-    int count =0;
+    //FireBaseValue 내 post()함수가 계속 불리는 것을 방지하기 위해 만든 변수
+    static int count =0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_caa__real_time_check2);
-
 
 
 
@@ -120,12 +120,13 @@ public class CAA_RealTimeCheck2 extends AppCompatActivity {
         //날짜,시간 달기
         time.setText(currentTime());
 
-        //파이어베이스
+        //파이어베이스_있는 결과 불러오기 +event가 있어야 변함(클릭이벤트, 새로고침 이벤트 등등)
         FireBaseSingle();
 
-        //if(checkFlag==true) {
-            FireBaseValue();
-        //}
+
+        //파이어베이스_있는 결과 불러오기 + 계속해서 데이터 변환 확인하기 + 실시간으로 변함
+        FireBaseValue();
+
 
 
 
@@ -135,6 +136,10 @@ public class CAA_RealTimeCheck2 extends AppCompatActivity {
 
             @Override
             public void onRefresh() {//새로고침 했을 때 내용
+
+                //새로고침 시 뜨는 알림창
+                Toast.makeText(CAA_RealTimeCheck2.this, "새로고침 되었습니다.\n"+currentTime(), Toast.LENGTH_SHORT).show();
+
                 //새로고침 시 바뀌는 내용1 - 시간
                 time.setText(currentTime());
 
@@ -219,9 +224,10 @@ public class CAA_RealTimeCheck2 extends AppCompatActivity {
                 //아무일도 일어나지 않음
             }
 
-        }else{ //값이 db로부터 넘어오지 않는다면 결석인 상태임
+        }else{ //값이 db로부터 넘어오지 않는다면 결석인 상태임 - 이런 경우 없는 걸로 가정함
             Absence.setTextColor(Color.parseColor(Red));
         }
+
     }
 
     //현재 시간을 String값으로 리턴해주는 함수
@@ -240,7 +246,7 @@ public class CAA_RealTimeCheck2 extends AppCompatActivity {
         DatabaseCheckResult post = new DatabaseCheckResult(currentTime(),checkresult);
         postValues = post.toMap();
 
-        childUpdates.put("/jwkim_db_checkresult/" + currentTime(), postValues);
+        childUpdates.put("/new1_db_checkresult/" + currentTime(), postValues);
         mDatabaseReference.updateChildren(childUpdates);
     }
 
@@ -288,9 +294,6 @@ public class CAA_RealTimeCheck2 extends AppCompatActivity {
         //파이어베이스 데이터베이스에서 데이터 불러오기
         mFirebaseDatabase = FirebaseDatabase.getInstance();     // 현재 데이터 베이스를 접근할 수 있는 진입점 받기
         mDatabaseReference = mFirebaseDatabase.getReference();
-        mDatabaseReference2 = mFirebaseDatabase.getReference();
-        //final String key = mDatabaseReference2.child(currentchild).child("jiwonkim").getKey();
-        //Log.e("key값",key);
 
 
         mDatabaseReference.child(currentchild).addValueEventListener(new ValueEventListener() {
@@ -301,39 +304,32 @@ public class CAA_RealTimeCheck2 extends AppCompatActivity {
                 //주의 사항
                 //rr.~에 데이터가 안넘어 오는 경우 -> NullPointerException 생기면서 앱꺼짐 현상 생김
                 //따라서 꼭 rr.~ != null인 경우로 예외 처리 넣어주기'
-//                boolean checkFlag2=false;
-//                int count=0;
-//                if(rr.jiwonkim.equals("bc")) {
-//                    checkFlag2 = true;
-//                }
 
 
-
-                //지켜보다가 값이 변경되면 post해주는 함수
+                //지켜보다가 값이 변경되면 post해주는 함수 post();
                 //그냥 post함수 쓰면 jiwonkim외에 다른 사람이 변경되어도 아래 if문이 실행됨
-//                if(checkFlag2==true){
-//                    if (!rr.jiwonkim.equals("bc")) { //jiwonkim이 attend, late, absence일 때
-//                        post(rr.jiwonkim); //post함수 호출
-//                        //checkFlag = false;
-//                    }else { //jiwonkim이 bc일 때
-//                        //checkFlag = true;
-//                    }
-//                }
+                //아래 count변수로 해결
+                //value는 attend_관람객이름 또는 late_관람객이름 또는 absence_관람객이름 셋중에 하나로 온다.
+                //_를 기준으로 앞은 ar(attendenceresult), name은 관람객이름이 추출된다.
 
+                int idx = rr.new1.indexOf("_");
+                String ar = rr.new1.substring(0,idx);
 
                 if(count==0) {
-                    if (!rr.jiwonkim.equals("bc")) {
-                        post(rr.jiwonkim);
+                    if (!ar.equals("bc")) {
+
+                        post(ar); //출석결과를 넘겨줌
                         count++;
+                        Log.e("count값",Integer.toString(count));
                     }
                 }
-                if(rr.jiwonkim.equals("bc")){
+
+                if(ar.equals("bc")){
                     count =0;
+                    Log.e("count값",Integer.toString(count));
+
+
                 }
-
-
-
-
 
 
             }

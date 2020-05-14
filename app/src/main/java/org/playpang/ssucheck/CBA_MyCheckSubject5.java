@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class CBA_MyCheckSubject5 extends AppCompatActivity {
     Intent intent;
@@ -18,6 +19,11 @@ public class CBA_MyCheckSubject5 extends AppCompatActivity {
         intent = getIntent();
         String kor =intent.getStringExtra("kor");
         String eng =intent.getStringExtra("eng");
+        String name = intent.getStringExtra("name");
+
+        //받은 이름 상단 이름에 붙이기
+        TextView nametv = findViewById(R.id.name);
+        nametv.setText(name);
 
 
         //액션바에 제목 달기

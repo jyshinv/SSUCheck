@@ -27,6 +27,9 @@ import java.util.ArrayList;
 
 public class CB_RealTimeCheckAdapter extends BaseAdapter {//BaseAdapter상속 후 alt+enter후 implement method 누르면 자동 생성됨
 
+    //C_Menu에서 받은 이름에 학번을 붙인 이름
+    String fullname;
+
     // Adapter에 추가된 데이터를 저장하기 위한 ArrayList
     //여기서 <>안에는 data패키지 안 get,set 하는 클래스
     ArrayList<SubjectNameItem> listViewItemList = new ArrayList<SubjectNameItem>();
@@ -66,29 +69,34 @@ public class CB_RealTimeCheckAdapter extends BaseAdapter {//BaseAdapter상속 �
                     Intent intent = new Intent(v.getContext(), CBA_MyCheckSubject1.class);
                     intent.putExtra("kor",kor);
                     intent.putExtra("eng",eng);
+                    intent.putExtra("name",fullname);
                     context.startActivity(intent);
                 }else if(eng.equals("Computer Architecture")){
                     Intent intent = new Intent(v.getContext(), CBA_MyCheckSubject2.class);
                     intent.putExtra("kor",kor);
                     intent.putExtra("eng",eng);
+                    intent.putExtra("name",fullname);
                     context.startActivity(intent);
 
                 }else if(eng.equals("Digital Media Principles and practice")){
                     Intent intent = new Intent(v.getContext(), CBA_MyCheckSubject3.class);
                     intent.putExtra("kor",kor);
                     intent.putExtra("eng",eng);
+                    intent.putExtra("name",fullname);
                     context.startActivity(intent);
 
                 }else if(eng.equals("Computer Programming")){
                     Intent intent = new Intent(v.getContext(), CBA_MyCheckSubject4.class);
                     intent.putExtra("kor",kor);
                     intent.putExtra("eng",eng);
+                    intent.putExtra("name",fullname);
                     context.startActivity(intent);
 
                 }else if(eng.equals("Thesis Seminar")){
                     Intent intent = new Intent(v.getContext(), CBA_MyCheckSubject5.class);
                     intent.putExtra("kor",kor);
                     intent.putExtra("eng",eng);
+                    intent.putExtra("name",fullname);
                     context.startActivity(intent);
 
                 }
@@ -126,6 +134,10 @@ public class CB_RealTimeCheckAdapter extends BaseAdapter {//BaseAdapter상속 �
         listViewItemList.add(item);
     }
 
+    //이전 창에서 보낸 Name정보를 이 함수를 호출해 Adapter로 전달 후 Adapter에서 위에 onClick부분에서 putExtra로 Name보내기
+    public void addName(String name){
+        fullname = name + " 20152020";
+    }
 
 
 

@@ -1,6 +1,8 @@
 package org.playpang.ssucheck;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
@@ -36,8 +38,11 @@ public class C_Menu extends AppCompatActivity {
     LinearLayout ll;
     Intent intent;
     ImageButton btn;
-    String currentchild ="AttendanceTest";
+    String currentchild ="Attendance";
     TextView tv1;
+    String realname;//id로 받을 name
+
+
 
     //데이터베이스
     private DatabaseReference mDatabaseReference;   // 데이터베이스의 주소를 저장합니다.
@@ -49,18 +54,19 @@ public class C_Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_c__menu);
 
-        //사용할 변수
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //상단의 이름으로 연결
         tv1 = findViewById(R.id.c_menu_name);
 
-        //메뉴화면에서도 바뀌게
-        //FireBaseValue();
-
+        //관람객 추출
+        FireBaseValue();
 
         //타이틀바 숨기기
         ActionBar bar = getSupportActionBar();
         bar.hide();
 
-        //three dot 버튼 눌렀을 때 작동
+        //three dot 버튼 눌렀을 때 로그아웃 누르면 작동
         btn = findViewById(R.id.c_menu_threedot);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,20 +79,22 @@ public class C_Menu extends AppCompatActivity {
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()){
                             case R.id.m1:
-                                Toast.makeText(getApplication(),"로그아웃",Toast.LENGTH_SHORT).show();
-                                //SharedPreferences에 저장된 값들을 로그아웃 버튼을 누르면 삭제하기 위해
-                                //SharedPreferences를 불러옵니다. 로그인 화면에서 만든 이름으로
-                                Intent intent = new Intent(C_Menu.this, B_Login.class);
-                                startActivity(intent);
-                                SharedPreferences auto = getSharedPreferences("auto", Activity.MODE_PRIVATE);
-                                SharedPreferences.Editor editor = auto.edit();
-                                //editor.clear()는 auto에 들어있는 모든 정보를 기기에서 지웁니다.
-                                editor.clear();
-                                editor.commit();
-                                finish();
 
+//                                Toast.makeText(getApplication(),"로그아웃",Toast.LENGTH_SHORT).show();
+//                                //SharedPreferences에 저장된 값들을 로그아웃 버튼을 누르면 삭제하기 위해
+//                                //SharedPreferences를 불러옵니다. 로그인 화면에서 만든 이름으로
+//                                Intent intent = new Intent(C_Menu.this, B_Login.class);
+//                                startActivity(intent);
+//                                SharedPreferences auto = getSharedPreferences("auto", Activity.MODE_PRIVATE);
+//                                SharedPreferences.Editor editor = auto.edit();
+//                                //editor.clear()는 auto에 들어있는 모든 정보를 기기에서 지웁니다.
+//                                editor.clear();
+//                                editor.commit();
+//                                finish();
+                                logout();
                                 break;
                             case R.id.m2:
+                                setting();
                                 Toast.makeText(getApplication(),"settings",Toast.LENGTH_SHORT).show();
                                 break;
                             default:
@@ -101,6 +109,7 @@ public class C_Menu extends AppCompatActivity {
 
             }
         });
+
 
         //main화면 4개의 버튼 누를 시 각 창으로 이동
         //첫번째 버튼
@@ -119,6 +128,7 @@ public class C_Menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 intent = new Intent(getApplicationContext(),CB_MyCheck.class);
+                intent.putExtra("name",realname);
                 startActivity(intent);
             }
         });
@@ -175,28 +185,14 @@ public class C_Menu extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 RealTimeAttendenceResult rr = dataSnapshot.getValue(RealTimeAttendenceResult.class);
 
-                //주의 사항
-                //rr.~에 데이터가 안넘어 오는 경우 -> NullPointerException 생기면서 앱꺼짐 현상 생김
-                //따라서 꼭 rr.~ != null인 경우로 예외 처리 넣어주기
 
-                //함수 호출
-                //출결결과, 3개의 TextView를 넘김
-//                AR(rr.jiwonkim,textView[0],textView[1],textView[2]);
-//                AR(rr.jiilkim,textView[3],textView[4],textView[5]);
-//                AR(rr.jiyoonshin,textView[6],textView[7],textView[8]);
-//                AR(rr.spongebob,textView[9],textView[10],textView[11]);
-//                AR(rr.ddunge,textView[12],textView[13],textView[14]);
-//
-//                //추가로 관람객 3명의 결과
-//                AR_new(rr.new1,new1tv,textView[15],textView[16],textView[17]);
-//                AR_new(rr.new2,new2tv,textView[18],textView[19],textView[20]);
-//                AR_new(rr.new3,new3tv,textView[21],textView[22],textView[23]);
+                //rr.new1에서 attend_관람객이름 또는 late_관람객이름 또는 absence_관람객이름 셋중에 하나로 온다.
+                //_를 기준으로 앞은 ar(attendenceresult), realname은 관람객이름이 추출된다.
+                int idx = rr.new1.indexOf("_");
+                realname = rr.new1.substring(idx +1); //관람객 이름 추출
+                //사용할 변수, 대표화면에 이름은 db에서 불러온 이름으로
 
-                //지켜보다가 값이 변경되면 post해주는 함수
-                //그냥 post함수 쓰면 jiwonkim외에 다른 사람이 변경되어도 아래 if문이 실행됨
-                if (!rr.jiwonkim.equals("bc")) {
-                    post(rr.jiwonkim); //post함수 호출
-                }
+                tv1.setText(realname +" 20152020");
 
 
             }
@@ -218,18 +214,71 @@ public class C_Menu extends AppCompatActivity {
         return currentTime;
     }
 
-    //Attendance의 값이 변경될 때마다 그 시간을 db에 넣기
-    public void post(String checkresult){
-        Map<String, Object> childUpdates = new HashMap<>();
-        Map<String, Object> postValues = null;
-        DatabaseCheckResult post = new DatabaseCheckResult(currentTime(),checkresult);
-        postValues = post.toMap();
 
-        childUpdates.put("/jwkim_db_checkresult/" + currentTime(), postValues);
-        mDatabaseReference.updateChildren(childUpdates);
+    //logout다이얼로그
+    public void logout(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("로그아웃").setMessage("로그아웃 하시겠습니까?")
+                .setPositiveButton("취소", new DialogInterface.OnClickListener() {//오른쪽에 오는 버튼
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setNegativeButton("확인", new DialogInterface.OnClickListener() {//왼쪽에 오는 버튼
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //확인 누르면 일어나는 이벤트
+                        Toast.makeText(getApplication(),"로그아웃",Toast.LENGTH_SHORT).show();
+                        //SharedPreferences에 저장된 값들을 로그아웃 버튼을 누르면 삭제하기 위해
+                        //SharedPreferences를 불러옵니다. 로그인 화면에서 만든 이름으로
+                        Intent intent = new Intent(C_Menu.this, B_Login.class);
+                        startActivity(intent);
+                        SharedPreferences auto = getSharedPreferences("auto", Activity.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = auto.edit();
+                        //editor.clear()는 auto에 들어있는 모든 정보를 기기에서 지웁니다.
+                        editor.clear();
+                        editor.commit();
+                        finish();
+                    }
+                }).show();
     }
 
+    //setting
+    public void setting(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
+        builder.setTitle("누적 출결결과 삭제").setMessage("삭제하시겠습니까?")
+                .setPositiveButton("취소", new DialogInterface.OnClickListener() {//오른쪽에 오는 버튼
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //취소 누르면 일어나는 이벤트
+                        
+                    }
+                })
+                .setNegativeButton("확인", new DialogInterface.OnClickListener() {//왼쪽에 오는 버튼
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //확인 누르면 일어나는 이벤트
+                        FireBaseDelete();
+
+                    }
+                }).show();
+    }
+
+    //new1_db_checkresult의 내용을 다 지우는 함수
+    private void FireBaseDelete() {
+
+        //파이어베이스 데이터베이스에서 데이터 불러오기
+        mFirebaseDatabase = FirebaseDatabase.getInstance();     // 현재 데이터 베이스를 접근할 수 있는 진입점 받기
+        mDatabaseReference = mFirebaseDatabase.getReference();
+        mDatabaseReference.child("new1_db_checkresult").setValue(null);
+        Toast.makeText(this, "삭제 완료", Toast.LENGTH_SHORT).show();
+        
+
+
+    }
 
 
 }

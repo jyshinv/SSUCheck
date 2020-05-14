@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -36,6 +37,7 @@ import java.util.Map;
 
 public class CBA_MyCheckSubject1 extends AppCompatActivity {
 
+    //변수 선언
     Intent intent;
     private DatabaseReference mDatabaseReference;   // 데이터베이스의 주소를 저장합니다.
     private FirebaseDatabase mFirebaseDatabase;
@@ -48,11 +50,6 @@ public class CBA_MyCheckSubject1 extends AppCompatActivity {
     final ListAdapter adapter = new CBA_MyCheckSubject1Adapter();
 
 
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +59,11 @@ public class CBA_MyCheckSubject1 extends AppCompatActivity {
         intent = getIntent();
         String kor =intent.getStringExtra("kor");
         String eng =intent.getStringExtra("eng");
+        String name = intent.getStringExtra("name");
+
+        //받은 이름 상단 이름에 붙이기
+        TextView nametv = findViewById(R.id.name);
+        nametv.setText(name);
 
 
         //액션바에 제목 달기
@@ -104,7 +106,7 @@ public class CBA_MyCheckSubject1 extends AppCompatActivity {
 
             }
         };
-        mDatabaseReference.child("jwkim_db_checkresult").addListenerForSingleValueEvent(postListener);
+        mDatabaseReference.child("new1_db_checkresult").addListenerForSingleValueEvent(postListener);
 
 
     }
@@ -127,7 +129,7 @@ public class CBA_MyCheckSubject1 extends AppCompatActivity {
 
             }
         };
-        mDatabaseReference.child("jwkim_db_checkresult").addValueEventListener(postListener);
+        mDatabaseReference.child("new1_db_checkresult").addValueEventListener(postListener);
 
 
     }
