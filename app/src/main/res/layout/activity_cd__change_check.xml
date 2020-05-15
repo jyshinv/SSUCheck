@@ -8,120 +8,360 @@
     android:background="@color/colorGray2"
     tools:context=".CD_ChangeCheck">
 
-
-    <FrameLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
             android:layout_gravity="center"
-            android:src="@drawable/changecheckblank"
-            android:visibility="visible" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="480dp"
-            android:layout_marginTop="240dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tv_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorBlack"
-                android:textSize="25sp"
-                tools:text="2020-5-22" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="57dp"
-                android:text="홍길동"
-                android:textColor="@color/colorBlack"
-                android:textSize="25sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="57dp"
-                android:text="02-820-1234"
-                android:textColor="@color/colorBlack"
-                android:textSize="25sp" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginTop="650dp"
-            android:layout_marginLeft="300dp"
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorRed"
-                android:textSize="30sp"
-                android:text="결석"/>
-
-            <TextView
-                android:layout_marginLeft="230dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorGreen"
-                android:textSize="30sp"
-                android:text="출석"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginTop="760dp"
-            android:layout_marginLeft="135dp"
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/et"
-                android:background="@color/colorWhite"
-                android:layout_width="535dp"
-                android:layout_height="200dp"
-                android:textColorHint="@color/colorGray"
-                android:gravity="top"
-                android:hint="출결변경신청 사유를 기재하세요" />
+
+            <TextView
+                android:layout_gravity="center"
+                android:layout_marginTop="200dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/colorChangeCheckTextOut"
+                android:text="데이터베이스(다) (온&amp;오프)"/>
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_width="540dp"
+                    android:layout_height="80dp"
+                    android:background="@color/colorWhite">
+
+                    <TextView
+                        android:layout_marginLeft="20dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorChangeCheckTextIn"
+                        android:textSize="20sp"
+                        android:text="강의일"/>
+
+                    <TextView
+                        android:id="@+id/tv_date"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="20sp"
+                        tools:text="2020-05-22"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="540dp"
+                    android:layout_height="80dp"
+                    android:background="@color/colorWhite">
+
+                    <TextView
+                        android:layout_marginLeft="20dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorChangeCheckTextIn"
+                        android:textSize="20sp"
+                        android:text="담당교수명"/>
+
+                    <TextView
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="20sp"
+                        android:text="홍길동"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="540dp"
+                    android:layout_height="80dp"
+                    android:background="@color/colorWhite">
+
+                    <TextView
+                        android:layout_marginLeft="20dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorChangeCheckTextIn"
+                        android:textSize="20sp"
+                        android:text="연락처"/>
+
+                    <TextView
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="20sp"
+                        android:text="02-820-1234"/>
+
+                </LinearLayout>
+
+
+
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/colorChangeCheckTextOut"
+                android:text="출결 변경 신청 내용"/>
+
 
             <LinearLayout
                 android:layout_marginTop="20dp"
-                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <Button
-                    android:id="@+id/ok_btn"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorBlack"
-                    android:textColor="@color/colorWhite"
-                    android:text="확인"/>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="260dp"
+                    android:layout_height="160dp"
+                    android:background="@color/colorWhite">
 
-                <Button
-                    android:id="@+id/cancel_btn"
-                    android:layout_marginLeft="40dp"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorBlack"
-                    android:textColor="@color/colorWhite"
-                    android:text="취소"/>
+                    <TextView
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:textColor="@color/colorChangeCheckTextIn"
+                        android:text="현재상태"/>
+
+                    <TextView
+                        android:layout_marginTop="20dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorRed"
+                        android:textSize="20sp"
+                        android:text="결석"/>
+
+
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="260dp"
+                    android:layout_height="160dp"
+                    android:orientation="vertical"
+                    android:background="@color/colorWhite">
+
+                    <TextView
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:textColor="@color/colorChangeCheckTextIn"
+                        android:text="신청상태"/>
+
+                    <TextView
+                        android:layout_marginTop="20dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorGreen"
+                        android:textSize="20sp"
+                        android:text="출석"/>
+
+                </LinearLayout>
 
             </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/et"
+                    android:background="@color/colorWhite"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="540dp"
+                    android:layout_height="200dp"
+                    android:textColorHint="@color/colorGray"
+                    android:gravity="top"
+                    android:hint="출결변경신청 사유를 기재하세요" />
+
+                <LinearLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/ok_btn"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorBlack"
+                        android:textColor="@color/colorWhite"
+                        android:text="확인"/>
+
+                    <Button
+                        android:id="@+id/cancel_btn"
+                        android:layout_marginLeft="40dp"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorBlack"
+                        android:textColor="@color/colorWhite"
+                        android:text="취소"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+
+
+
         </LinearLayout>
+    </ScrollView>
 
 
 
-    </FrameLayout>
+
+
+    <!--<FrameLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+        <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:src="@drawable/changecheckblank"-->
+            <!--android:visibility="visible" />-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="480dp"-->
+            <!--android:layout_marginTop="240dp"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/tv_date"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textColor="@color/colorBlack"-->
+                <!--android:textSize="25sp"-->
+                <!--tools:text="2020-5-22" />-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="57dp"-->
+                <!--android:text="홍길동"-->
+                <!--android:textColor="@color/colorBlack"-->
+                <!--android:textSize="25sp" />-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="57dp"-->
+                <!--android:text="02-820-1234"-->
+                <!--android:textColor="@color/colorBlack"-->
+                <!--android:textSize="25sp" />-->
+
+
+        <!--</LinearLayout>-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_marginTop="650dp"-->
+            <!--android:layout_marginLeft="300dp"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content">-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textColor="@color/colorRed"-->
+                <!--android:textSize="30sp"-->
+                <!--android:text="결석"/>-->
+
+            <!--<TextView-->
+                <!--android:layout_marginLeft="230dp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textColor="@color/colorGreen"-->
+                <!--android:textSize="30sp"-->
+                <!--android:text="출석"/>-->
+
+        <!--</LinearLayout>-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_marginTop="760dp"-->
+            <!--android:layout_marginLeft="135dp"-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content">-->
+            <!--<EditText-->
+                <!--android:id="@+id/et"-->
+                <!--android:background="@color/colorWhite"-->
+                <!--android:layout_width="535dp"-->
+                <!--android:layout_height="200dp"-->
+                <!--android:textColorHint="@color/colorGray"-->
+                <!--android:gravity="top"-->
+                <!--android:hint="출결변경신청 사유를 기재하세요" />-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
+
+                <!--<Button-->
+                    <!--android:id="@+id/ok_btn"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:background="@color/colorBlack"-->
+                    <!--android:textColor="@color/colorWhite"-->
+                    <!--android:text="확인"/>-->
+
+                <!--<Button-->
+                    <!--android:id="@+id/cancel_btn"-->
+                    <!--android:layout_marginLeft="40dp"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:background="@color/colorBlack"-->
+                    <!--android:textColor="@color/colorWhite"-->
+                    <!--android:text="취소"/>-->
+
+            <!--</LinearLayout>-->
+        <!--</LinearLayout>-->
+
+
+
+    <!--</FrameLayout>-->
 
 </LinearLayout>
