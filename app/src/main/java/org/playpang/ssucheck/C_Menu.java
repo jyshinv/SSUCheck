@@ -95,7 +95,6 @@ public class C_Menu extends AppCompatActivity {
                                 break;
                             case R.id.m2:
                                 setting();
-                                Toast.makeText(getApplication(),"settings",Toast.LENGTH_SHORT).show();
                                 break;
                             default:
                                 break;
@@ -220,13 +219,13 @@ public class C_Menu extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         builder.setTitle("로그아웃").setMessage("로그아웃 하시겠습니까?")
-                .setPositiveButton("취소", new DialogInterface.OnClickListener() {//오른쪽에 오는 버튼
+                .setNegativeButton("취소", new DialogInterface.OnClickListener() {//오른쪽에 오는 버튼
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
                     }
                 })
-                .setNegativeButton("확인", new DialogInterface.OnClickListener() {//왼쪽에 오는 버튼
+                .setPositiveButton("확인", new DialogInterface.OnClickListener() {//왼쪽에 오는 버튼
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //확인 누르면 일어나는 이벤트
@@ -249,15 +248,15 @@ public class C_Menu extends AppCompatActivity {
     public void setting(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        builder.setTitle("누적 출결결과 삭제").setMessage("삭제하시겠습니까?")
-                .setPositiveButton("취소", new DialogInterface.OnClickListener() {//오른쪽에 오는 버튼
+        builder.setTitle("누적 출결 데이터베이스 삭제").setMessage("삭제하시겠습니까?")
+                .setNegativeButton("취소", new DialogInterface.OnClickListener() {//오른쪽에 오는 버튼
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //취소 누르면 일어나는 이벤트
                         
                     }
                 })
-                .setNegativeButton("확인", new DialogInterface.OnClickListener() {//왼쪽에 오는 버튼
+                .setPositiveButton("확인", new DialogInterface.OnClickListener() {//왼쪽에 오는 버튼
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //확인 누르면 일어나는 이벤트
