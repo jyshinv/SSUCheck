@@ -20,7 +20,7 @@
 
             <TextView
                 android:layout_gravity="center"
-                android:layout_marginTop="200dp"
+                android:layout_marginTop="150dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
@@ -29,13 +29,15 @@
 
 
             <LinearLayout
+                android:layout_gravity="center"
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <LinearLayout
+                    android:layout_gravity="center"
                     android:layout_marginTop="20dp"
-                    android:layout_width="540dp"
+                    android:layout_width="700dp"
                     android:layout_height="80dp"
                     android:background="@color/colorWhite">
 
@@ -62,8 +64,9 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:layout_width="540dp"
+                    android:layout_width="700dp"
                     android:layout_height="80dp"
                     android:background="@color/colorWhite">
 
@@ -89,8 +92,9 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:layout_width="540dp"
+                    android:layout_width="700dp"
                     android:layout_height="80dp"
                     android:background="@color/colorWhite">
 
@@ -132,6 +136,7 @@
 
 
             <LinearLayout
+                android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
@@ -139,7 +144,7 @@
 
                 <LinearLayout
                     android:orientation="vertical"
-                    android:layout_width="260dp"
+                    android:layout_width="340dp"
                     android:layout_height="160dp"
                     android:background="@color/colorWhite">
 
@@ -169,7 +174,7 @@
 
                 <LinearLayout
                     android:layout_marginLeft="20dp"
-                    android:layout_width="260dp"
+                    android:layout_width="340dp"
                     android:layout_height="160dp"
                     android:orientation="vertical"
                     android:background="@color/colorWhite">
@@ -197,6 +202,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_gravity="center"
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -204,7 +210,7 @@
                     android:id="@+id/et"
                     android:background="@color/colorWhite"
                     android:layout_marginTop="20dp"
-                    android:layout_width="540dp"
+                    android:layout_width="700dp"
                     android:layout_height="200dp"
                     android:textColorHint="@color/colorGray"
                     android:gravity="top"
