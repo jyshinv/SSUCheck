@@ -185,13 +185,22 @@ public class C_Menu extends AppCompatActivity {
                 RealTimeAttendenceResult rr = dataSnapshot.getValue(RealTimeAttendenceResult.class);
 
 
-                //rr.new1에서 attend_관람객이름 또는 late_관람객이름 또는 absence_관람객이름 셋중에 하나로 온다.
-                //_를 기준으로 앞은 ar(attendenceresult), realname은 관람객이름이 추출된다.
-                int idx = rr.new1.indexOf("_");
-                realname = rr.new1.substring(idx +1); //관람객 이름 추출
-                //사용할 변수, 대표화면에 이름은 db에서 불러온 이름으로
 
-                tv1.setText(realname +" 20152020");
+                    //rr.new1에서 attend_관람객이름 또는 late_관람객이름 또는 absence_관람객이름 셋중에 하나로 온다.
+                    //_를 기준으로 앞은 ar(attendenceresult), realname은 관람객이름이 추출된다.
+                    int idx = rr.new1.indexOf("_");
+                    realname = rr.new1.substring(idx +1); //관람객 이름 추출
+                    //사용할 변수, 대표화면에 이름은 db에서 불러온 이름으로
+
+                    tv1.setText(realname +" 20152020");
+
+                    //                if(rr.new1 != null){
+
+                //                }else{
+//                    realname = "Friend";
+//                    tv1.setText(realname +" 20152020");
+//                }
+
 
 
             }
